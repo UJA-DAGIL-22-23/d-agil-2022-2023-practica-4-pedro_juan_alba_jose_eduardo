@@ -1,9 +1,10 @@
 /**
- * @file personas.css
- * @description Estilos aplicables a la visualización de elementos relacionados con el MS Personas
+ * @file ms-plantilla.css
+ * @description Estilos aplicables a la visualización de elementos relacionados con el MS Plantilla
  * @author Víctor M. Rivas Santos <vrivas@ujaen.es>
  * @date 03-Feb-2023
  */
+
  table.listado-personas {
     width: 100%;
     border: 1px solid rgba(0, 0, 100, 0.8);
