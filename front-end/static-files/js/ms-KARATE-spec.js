@@ -1,6 +1,6 @@
 /**
  * @file ms-plantilla-spec.js
- * @description Fichero TDD para probar todo lo relacionado con MS Plantilla en el front-end
+ * @description Fichero TDD para probar todo lo relacionado con MS Karate en el front-end
  * @author Víctor M. Rivas <vrivas@ujaen.es>
  * @date 03-feb-2023
  */
@@ -10,8 +10,8 @@
 // Constantes para usar en las pruebas
 const elementoTitulo = document.getElementById(Frontend.ID_SECCION_PRINCIPAL_TITULO)
 const elementoContenido = document.getElementById(Frontend.ID_SECCION_PRINCIPAL_CONTENIDO)
-const TITULO_HOME = "Plantilla Home"
-const TITULO_ACERCA_DE = "Plantilla Acerca de"
+const TITULO_HOME = "Karate Home"
+const TITULO_ACERCA_DE = "Karate Acerca de"
 
 const datosDescargadosPrueba = {
     mensaje: "Mensaje de prueba descargado",
@@ -34,86 +34,86 @@ function esperar(ms) {
 
 // SPECS a probar
 
-describe("Plantilla.mostrarHome: ", function () {
+describe("Karate.mostrarHome: ", function () {
 
     it("muestra datos nulos cuando le pasamos un valor nulo",
         function () {
-            Plantilla.mostrarHome()
+            Karate.mostrarHome()
             expect(elementoTitulo.innerHTML).toBe(TITULO_HOME)
-            expect(elementoContenido.innerHTML).toBe(Plantilla.datosDescargadosNulos.mensaje)
+            expect(elementoContenido.innerHTML).toBe(Karate.datosDescargadosNulos.mensaje)
         })
 
     it("muestra datos nulos cuando le pasamos un valor que no es un objeto",
         function () {
-            Plantilla.mostrarHome(23)
+            Karate.mostrarHome(23)
             expect(elementoTitulo.innerHTML).toBe(TITULO_HOME)
-            expect(elementoContenido.innerHTML).toBe(Plantilla.datosDescargadosNulos.mensaje)
+            expect(elementoContenido.innerHTML).toBe(Karate.datosDescargadosNulos.mensaje)
         })
 
     it("muestra datos nulos cuando le pasamos un objeto que no tiene campo mensaje",
         function () {
             // Objeto vacío
-            Plantilla.mostrarHome({})
+            Karate.mostrarHome({})
             expect(elementoTitulo.innerHTML).toBe(TITULO_HOME)
-            expect(elementoContenido.innerHTML).toBe(Plantilla.datosDescargadosNulos.mensaje)
+            expect(elementoContenido.innerHTML).toBe(Karate.datosDescargadosNulos.mensaje)
 
             // Objeto sin campo mensaje
-            Plantilla.mostrarHome({ foo: "bar" })
+            Karate.mostrarHome({ foo: "bar" })
             expect(elementoTitulo.innerHTML).toBe(TITULO_HOME)
-            expect(elementoContenido.innerHTML).toBe(Plantilla.datosDescargadosNulos.mensaje)
+            expect(elementoContenido.innerHTML).toBe(Karate.datosDescargadosNulos.mensaje)
         })
 
     it("muestra correctamente el título y el mensaje",
         function () {
-            Plantilla.mostrarHome(datosDescargadosPrueba)
+            Karate.mostrarHome(datosDescargadosPrueba)
             expect(elementoTitulo.innerHTML).toBe(TITULO_HOME)
             expect(elementoContenido.innerHTML).toBe(datosDescargadosPrueba.mensaje)
         })
 })
 
 
-describe("Plantilla.mostrarAcercaDe: ", function () {
+describe("Karate.mostrarAcercaDe: ", function () {
     it("muestra datos nulos cuando le pasamos un valor nulo",
         function () {
-            Plantilla.mostrarAcercaDe()
+            Karate.mostrarAcercaDe()
             expect(elementoTitulo.innerHTML).toBe(TITULO_ACERCA_DE)
-            expect(elementoContenido.innerHTML.search(Plantilla.datosDescargadosNulos.mensaje) >= 0).toBeTrue()
+            expect(elementoContenido.innerHTML.search(Karate.datosDescargadosNulos.mensaje) >= 0).toBeTrue()
         })
 
     it("muestra datos nulos cuando le pasamos un valor que no es un objeto",
         function () {
-            Plantilla.mostrarAcercaDe(23)
+            Karate.mostrarAcercaDe(23)
             expect(elementoTitulo.innerHTML).toBe(TITULO_ACERCA_DE)
-            expect(elementoContenido.innerHTML.search(Plantilla.datosDescargadosNulos.mensaje) >= 0).toBeTrue()
+            expect(elementoContenido.innerHTML.search(Karate.datosDescargadosNulos.mensaje) >= 0).toBeTrue()
         })
 
     it("muestra datos nulos cuando le pasamos un objeto que no tiene campo mensaje o autor o email o fecha ",
         function () {
             // Objeto vacío
-            Plantilla.mostrarAcercaDe({})
+            Karate.mostrarAcercaDe({})
             expect(elementoTitulo.innerHTML).toBe(TITULO_ACERCA_DE)
-            expect(elementoContenido.innerHTML.search(Plantilla.datosDescargadosNulos.mensaje) >= 0).toBeTrue()
+            expect(elementoContenido.innerHTML.search(Karate.datosDescargadosNulos.mensaje) >= 0).toBeTrue()
 
             // Objeto sin campo mensaje
-            Plantilla.mostrarAcercaDe({ autor: "un autor", email: "un email", fecha: "una fecha" })
+            Karate.mostrarAcercaDe({ autor: "un autor", email: "un email", fecha: "una fecha" })
             expect(elementoTitulo.innerHTML).toBe(TITULO_ACERCA_DE)
-            expect(elementoContenido.innerHTML.search(Plantilla.datosDescargadosNulos.mensaje) >= 0).toBeTrue()
+            expect(elementoContenido.innerHTML.search(Karate.datosDescargadosNulos.mensaje) >= 0).toBeTrue()
             // Objeto sin campo autor
-            Plantilla.mostrarAcercaDe({ mensaje: "un mensaje", email: "un email", fecha: "una fecha" })
+            Karate.mostrarAcercaDe({ mensaje: "un mensaje", email: "un email", fecha: "una fecha" })
             expect(elementoTitulo.innerHTML).toBe(TITULO_ACERCA_DE)
-            expect(elementoContenido.innerHTML.search(Plantilla.datosDescargadosNulos.mensaje) >= 0).toBeTrue()
+            expect(elementoContenido.innerHTML.search(Karate.datosDescargadosNulos.mensaje) >= 0).toBeTrue()
             // Objeto sin campo email
-            Plantilla.mostrarAcercaDe({ mensaje: "un mensaje", autor: "un autor", fecha: "una fecha" })
+            Karate.mostrarAcercaDe({ mensaje: "un mensaje", autor: "un autor", fecha: "una fecha" })
             expect(elementoTitulo.innerHTML).toBe(TITULO_ACERCA_DE)
-            expect(elementoContenido.innerHTML.search(Plantilla.datosDescargadosNulos.mensaje) >= 0).toBeTrue()
+            expect(elementoContenido.innerHTML.search(Karate.datosDescargadosNulos.mensaje) >= 0).toBeTrue()
             // Objeto sin campo fecha
-            Plantilla.mostrarAcercaDe({ mensaje: "un mensaje", autor: "un autor", email: "un email" })
+            Karate.mostrarAcercaDe({ mensaje: "un mensaje", autor: "un autor", email: "un email" })
             expect(elementoTitulo.innerHTML).toBe(TITULO_ACERCA_DE)
-            expect(elementoContenido.innerHTML.search(Plantilla.datosDescargadosNulos.mensaje) >= 0).toBeTrue()
+            expect(elementoContenido.innerHTML.search(Karate.datosDescargadosNulos.mensaje) >= 0).toBeTrue()
         })
     it("muestra correctamente el título y el mensaje conteniendo el autor, el email y la fecha",
         function () {
-            Plantilla.mostrarAcercaDe(datosDescargadosPrueba)
+            Karate.mostrarAcercaDe(datosDescargadosPrueba)
             expect(elementoTitulo.innerHTML).toBe(TITULO_ACERCA_DE)
 
             // Comprobamos que al buscar el autor, el email y la fecha de prueba los encuentra dentro del contenido del article
@@ -167,16 +167,16 @@ let deportista2 = {
 }
 
 let cuerpo = `
-<tr title="${Plantilla.plantillaTags.ID}">
-    <td>${Plantilla.plantillaTags.ID}</td>
-    <td>${Plantilla.plantillaTags.NOMBRE}</td>
-    <td>${Plantilla.plantillaTags.APELLIDOS}</td>
-    <td>${Plantilla.plantillaTags.EDAD}</td>
-    <td>${Plantilla.plantillaTags.NACIMIENTO}</td>
-    <td>${Plantilla.plantillaTags.FECHA.DIA}/${Plantilla.plantillaTags.FECHA.MES}/${Plantilla.plantillaTags.FECHA.ANIO}</td>
-    <td>${Plantilla.plantillaTags.PALMARES_MUNDIALES}</td>
+<tr title="${Karate.plantillaTags.ID}">
+    <td>${Karate.plantillaTags.ID}</td>
+    <td>${Karate.plantillaTags.NOMBRE}</td>
+    <td>${Karate.plantillaTags.APELLIDOS}</td>
+    <td>${Karate.plantillaTags.EDAD}</td>
+    <td>${Karate.plantillaTags.NACIMIENTO}</td>
+    <td>${Karate.plantillaTags.FECHA.DIA}/${Karate.plantillaTags.FECHA.MES}/${Karate.plantillaTags.FECHA.ANIO}</td>
+    <td>${Karate.plantillaTags.PALMARES_MUNDIALES}</td>
     <td>
-        <div><a href="javascript:Plantilla.mostrar('${Plantilla.plantillaTags.ID}')" class="opcion-secundaria mostrar">Mostrar</a></div>
+        <div><a href="javascript:Karate.mostrar('${Karate.plantillaTags.ID}')" class="opcion-secundaria mostrar">Mostrar</a></div>
     </td>
 </tr>
 `;
@@ -189,24 +189,24 @@ let formulario = `
             <th width="15%">Año Nacimiento</th><th width="25%">Fecha</th><th width="25%">Palmarés Mundiales</th>
         </thead>
         <tbody>
-            <tr title="${Plantilla.plantillaTags.ID}">
-            <td>${Plantilla.plantillaTags.ID}</td>
-            <td>${Plantilla.plantillaTags.NOMBRE}</td>
-            <td>${Plantilla.plantillaTags.APELLIDOS}</td>
-            <td>${Plantilla.plantillaTags.EDAD}</td>
-            <td>${Plantilla.plantillaTags.NACIMIENTO}</td>
-            <td>${Plantilla.plantillaTags.FECHA.DIA}/${Plantilla.plantillaTags.FECHA.MES}/${Plantilla.plantillaTags.FECHA.ANIO}</td>
-            <td>${Plantilla.plantillaTags.PALMARES_MUNDIALES}</td>
+            <tr title="${Karate.plantillaTags.ID}">
+            <td>${Karate.plantillaTags.ID}</td>
+            <td>${Karate.plantillaTags.NOMBRE}</td>
+            <td>${Karate.plantillaTags.APELLIDOS}</td>
+            <td>${Karate.plantillaTags.EDAD}</td>
+            <td>${Karate.plantillaTags.NACIMIENTO}</td>
+            <td>${Karate.plantillaTags.FECHA.DIA}/${Karate.plantillaTags.FECHA.MES}/${Karate.plantillaTags.FECHA.ANIO}</td>
+            <td>${PlKarateantilla.plantillaTags.PALMARES_MUNDIALES}</td>
             <td>
-                <div><a href="javascript:Plantilla.eliminar('${Plantilla.plantillaTags.ID}')" class="opcion-secundaria mostrar">Eliminar</a></div>
-                <div><a href="javascript:Plantilla.procesarHome()" class="opcion-secundaria mostrar">Volver a home</a></div>
-                <div><a href="javascript:Plantilla.editarDeportista('${Plantilla.plantillaTags.ID}')" class="opcion-secundaria editar">Editar</a></div>
+                <div><a href="javascript:Karate.eliminar('${Karate.plantillaTags.ID}')" class="opcion-secundaria mostrar">Eliminar</a></div>
+                <div><a href="javascript:Karate.procesarHome()" class="opcion-secundaria mostrar">Volver a home</a></div>
+                <div><a href="javascript:Karate.editarDeportista('${Karate.plantillaTags.ID}')" class="opcion-secundaria editar">Editar</a></div>
             </td>
         </tbody>
     </table>
 
-    <div><a href="javascript:Plantilla.botonAnterior('${Plantilla.plantillaTags.ID}')" class="opcion-secundaria mostrar">Anterior</a></div>
-    <div><a href="javascript:Plantilla.botonSiguiente('${Plantilla.plantillaTags.ID}')" class="opcion-secundaria mostrar">Siguiente</a></div>
+    <div><a href="javascript:Karate.botonAnterior('${Karate.plantillaTags.ID}')" class="opcion-secundaria mostrar">Anterior</a></div>
+    <div><a href="javascript:Karate.botonSiguiente('${Karate.plantillaTags.ID}')" class="opcion-secundaria mostrar">Siguiente</a></div>
     
 </form>
 `;
@@ -214,10 +214,10 @@ let formulario = `
 
 
 
-describe("Plantilla.sustituyeTags: ", function() {
+describe("Karate.sustituyeTags: ", function() {
     it("Muestra los datos al sustituir los valores con los datos creados",
         function () {
-            let plantilla = Plantilla.sustituyeTags(cuerpo, deportista)
+            let plantilla = Karate.sustituyeTags(cuerpo, deportista)
 
             expect(plantilla.includes(deportista.data.nombre)).toBeTrue();
             expect(plantilla.includes(deportista.data.apellidos)).toBeTrue();
@@ -233,13 +233,13 @@ describe("Plantilla.sustituyeTags: ", function() {
 
 let vector = [deportista, deportista2]
 
-describe("Plantilla.imprimeTodosDeportistas: ", function() {
+describe("Karate.imprimeTodosDeportistas: ", function() {
     const tituloPrueba = "Listado de deportistas"
 
     it("Muestra los datos de varias personas de ejemplo creadas ",
     function (){
         
-        Plantilla.imprimeTodosDeportistas(vector)
+        Karate.imprimeTodosDeportistas(vector)
 
         expect(document.getElementById(Frontend.ID_SECCION_PRINCIPAL_TITULO).innerHTML).toBe(tituloPrueba)
         expect(document.getElementById(Frontend.ID_SECCION_PRINCIPAL_CONTENIDO).innerHTML.includes(vector[0].data.nombre)).toBeTrue()
@@ -263,13 +263,13 @@ describe("Plantilla.imprimeTodosDeportistas: ", function() {
     });
 });
 
-describe("Plantilla.imprimeUnDeportista: ", function() {
+describe("Karate.imprimeUnDeportista: ", function() {
     const tituloPrueba = "Mostrar una persona"
 
     it("Muestra los datos de varias personas de ejemplo creadas ",
     function (){
-        //let plantilla = Plantilla.deportistaComoFormulario(deportista)
-        Plantilla.imprimeUnDeportista(deportista)
+        //let plantilla = Karate.deportistaComoFormulario(deportista)
+        Karate.imprimeUnDeportista(deportista)
 
         expect(document.getElementById(Frontend.ID_SECCION_PRINCIPAL_TITULO).innerHTML).toBe(tituloPrueba)
         expect(document.getElementById(Frontend.ID_SECCION_PRINCIPAL_CONTENIDO).innerHTML.includes(deportista.data.nombre)).toBeTrue()
@@ -278,12 +278,12 @@ describe("Plantilla.imprimeUnDeportista: ", function() {
 });
 
 
-describe("Plantilla.añadirNuevoDeportista: ", function() {
+describe("Karate.añadirNuevoDeportista: ", function() {
     const tituloPrueba = "Añadir un deportista"
 
     it("Muestra el formulario de añadir una persona ",
     function (){
-        Plantilla.añadirNuevoDeportista()
+        Karate.añadirNuevoDeportista()
 
         expect(document.getElementById(Frontend.ID_SECCION_PRINCIPAL_TITULO).innerHTML).toBe(tituloPrueba)
         expect(document.getElementById(Frontend.ID_SECCION_PRINCIPAL_CONTENIDO).innerHTML.includes("nombre")).toBeTrue()
@@ -298,12 +298,12 @@ describe("Plantilla.añadirNuevoDeportista: ", function() {
     });
 });
 
-describe("Plantilla.imprimeUnDeportistEditar: ", function() {
+describe("Karate.imprimeUnDeportistEditar: ", function() {
     const tituloPrueba = "Editar una persona"
 
     it("Muestra el formulario con los datos de la persona a editar ",
     function (){
-        Plantilla.imprimeUnDeportistaEditar(deportista)
+        Karate.imprimeUnDeportistaEditar(deportista)
 
         expect(document.getElementById(Frontend.ID_SECCION_PRINCIPAL_TITULO).innerHTML).toBe(tituloPrueba)
         expect(document.getElementById(Frontend.ID_SECCION_PRINCIPAL_CONTENIDO).innerHTML.includes(deportista.data.nombre)).toBeTrue()
@@ -319,12 +319,12 @@ describe("Plantilla.imprimeUnDeportistEditar: ", function() {
 });
 
 
-describe("Plantilla.imprimeNombreTodosDeportistas: ", function() {
+describe("Karate.imprimeNombreTodosDeportistas: ", function() {
     const tituloPrueba = "Listado de los nombres de deportistas"
 
     it("Muestra correctamente los nombres de las personas",
     function (){
-        Plantilla.imprimeNombreTodosDeportistas(vector)
+        Karate.imprimeNombreTodosDeportistas(vector)
 
         expect(document.getElementById(Frontend.ID_SECCION_PRINCIPAL_TITULO).innerHTML).toBe(tituloPrueba)
         expect(document.getElementById(Frontend.ID_SECCION_PRINCIPAL_CONTENIDO).innerHTML.includes(vector[0].data.nombre)).toBeTrue()
@@ -334,12 +334,12 @@ describe("Plantilla.imprimeNombreTodosDeportistas: ", function() {
 });
 
 
-describe("Plantilla.ordenarNombres: ", function() {
+describe("Karate.ordenarNombres: ", function() {
     const tituloPrueba = "Listado de los nombres de deportistas ordenados alfabéticamente"
 
     it("Muestra correctamente los nombres de las personas",
     function (){
-        Plantilla.ordenarNombres(vector)
+        Karate.ordenarNombres(vector)
 
         expect(document.getElementById(Frontend.ID_SECCION_PRINCIPAL_TITULO).innerHTML).toBe(tituloPrueba)
         expect(document.getElementById(Frontend.ID_SECCION_PRINCIPAL_CONTENIDO).innerHTML.includes(vector[0].data.nombre)).toBeTrue()
@@ -349,12 +349,12 @@ describe("Plantilla.ordenarNombres: ", function() {
 });
 
 
-describe("Plantilla.recuperaDatosAlmacenados y Plantilla.almacenaDatos: ", function() {
+describe("Karate.recuperaDatosAlmacenados y Karate.almacenaDatos: ", function() {
     
     it("Muestra los datos del deportista almacenado",
     function (){
-        Plantilla.almacenaDatos(deportista)
-        let resultado = Plantilla.recuperaDatosAlmacenados()
+        Karate.almacenaDatos(deportista)
+        let resultado = Karate.recuperaDatosAlmacenados()
         
         expect(resultado.data.nombre == deportista.data.nombre).toBeTrue();
         expect(resultado.data.apellidos == deportista.data.apellidos).toBeTrue();
@@ -362,11 +362,11 @@ describe("Plantilla.recuperaDatosAlmacenados y Plantilla.almacenaDatos: ", funct
     });
 });
 
-describe("Plantilla.deportistaComoFormulario: ", function() {
+describe("Karate.deportistaComoFormulario: ", function() {
     
     it("Actualiza correctamente los datos del deportista en el formulario",
     function (){
-        let plantilla = Plantilla.deportistaComoFormulario(deportista)
+        let plantilla = Karate.deportistaComoFormulario(deportista)
         
         expect(plantilla.includes(deportista.data.nombre)).toBeTrue();
         expect(plantilla.includes(deportista.data.apellidos)).toBeTrue();
@@ -380,11 +380,11 @@ describe("Plantilla.deportistaComoFormulario: ", function() {
     });
 });
 
-describe("Plantilla.formularioEditar.actualiza: ", function() {
+describe("Karate.formularioEditar.actualiza: ", function() {
     
     it("Actualiza correctamente los datos del deportista en el formulario de editar",
     function (){
-        let formulario = Plantilla.formularioEditar.actualiza(deportista)
+        let formulario = Karate.formularioEditar.actualiza(deportista)
         
         expect(formulario.includes(deportista.data.nombre)).toBeTrue();
         expect(formulario.includes(deportista.data.apellidos)).toBeTrue();
@@ -399,11 +399,11 @@ describe("Plantilla.formularioEditar.actualiza: ", function() {
 });
 
 
-describe("Plantilla.deportistaComoFormularioEditar: ", function() {
+describe("Karate.deportistaComoFormularioEditar: ", function() {
     
     it("Actualiza correctamente los datos del deportista en el formulario de editar",
     function (){
-        let formulario = Plantilla.deportistaComoFormularioEditar(deportista)
+        let formulario = Karate.deportistaComoFormularioEditar(deportista)
         
         expect(formulario.includes(deportista.data.nombre)).toBeTrue();
         expect(formulario.includes(deportista.data.apellidos)).toBeTrue();
@@ -418,22 +418,22 @@ describe("Plantilla.deportistaComoFormularioEditar: ", function() {
 });
 
 
-describe("Plantilla.plantillaTablaDeportistasSoloNombres.actualiza: ", function() {
+describe("Karate.plantillaTablaDeportistasSoloNombres.actualiza: ", function() {
     
     it("Actualiza correctamente los nombres de los deportistas en la tabla",
     function (){
-        let formulario = Plantilla.plantillaTablaDeportistasSoloNombres.actualiza(deportista)
+        let formulario = Karate.plantillaTablaDeportistasSoloNombres.actualiza(deportista)
         
         expect(formulario.includes(deportista.data.nombre)).toBeTrue();
         
     });
 });
 
-describe("Plantilla.plantillaTablaDeportistas.actualiza: ", function() {
+describe("Karate.plantillaTablaDeportistas.actualiza: ", function() {
     
     it("Actualiza correctamente los datos del deportista en la tabla",
     function (){
-        let formulario = Plantilla.plantillaTablaDeportistas.actualiza(deportista)
+        let formulario = Karate.plantillaTablaDeportistas.actualiza(deportista)
         
         expect(formulario.includes(deportista.data.nombre)).toBeTrue();
         expect(formulario.includes(deportista.data.apellidos)).toBeTrue();
@@ -447,11 +447,11 @@ describe("Plantilla.plantillaTablaDeportistas.actualiza: ", function() {
     });
 });
 
-describe("Plantilla.plantillaFormularioDeportista.actualiza: ", function() {
+describe("Karate.plantillaFormularioDeportista.actualiza: ", function() {
     
     it("Actualiza correctamente los datos del deportista en el formulario",
     function (){
-        let formulario = Plantilla.plantillaFormularioDeportista.actualiza(deportista)
+        let formulario = Karate.plantillaFormularioDeportista.actualiza(deportista)
         
         expect(formulario.includes(deportista.data.nombre)).toBeTrue();
         expect(formulario.includes(deportista.data.apellidos)).toBeTrue();
@@ -466,33 +466,3 @@ describe("Plantilla.plantillaFormularioDeportista.actualiza: ", function() {
 });
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-IMPORTANTE
-==========
-
-Las pruebas TDD que se encargan de probar las conexiones con el microservicio desde el cliente son difíciles de probar 
-dado que requieren solucionar temas de sincronización. 
-Esto afecta a los métodos:
- - Plantilla.descargarRuta
- - Plantilla.procesarAcercaDe
- - Plantilla.procesarHome
-
- Las soluciones propuestas en distintos sitios web no han producido el resultado esperado, 
- por tanto: para esta práctica, se pueden dejar SIN HACER.
-
- */
