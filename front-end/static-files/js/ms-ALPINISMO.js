@@ -8,18 +8,18 @@
 "use strict";
 
 /// Creo el espacio de nombres
-let Plantilla = {};
+let ALPINISMO = {};
 
 let TodasPersonas = null;
 let pos = null;
 
-Plantilla.formBusqueda = {
+ALPINISMO.formBusqueda = {
     busqueda: "form-busqueda"    
 }
 
 
 /// Nombre de los campos del formulario para editar una persona
-Plantilla.form = {
+ALPINISMO.form = {
     NOMBRE: "form-persona-nombre",
     DIA: "form-persona-dia", 
     MES: "form-persona-mes", 
@@ -30,7 +30,7 @@ Plantilla.form = {
 }
 
 // Plantilla de datosDescargados vacíos
-Plantilla.datosDescargadosNulos = {
+ALPINISMO.datosDescargadosNulos = {
     mensaje: "Datos Descargados No válidos",
     autor: "",
     email: "",
@@ -38,10 +38,10 @@ Plantilla.datosDescargadosNulos = {
 }
 
 /// Objeto para almacenar los datos de la persona que se está mostrando
-Plantilla.personaMostrada = null
+ALPINISMO.personaMostrada = null
 
 // Tags que voy a usar para sustituir los campos
-Plantilla.plantillaTags = {
+ALPINISMO.plantillaTags = {
     "ID": "### ID ###",
     "NOMBRE": "### NOMBRE ###",
     "FECHA": {"DIA": "### DIA ###", "MES": "### MES ###", "ANIO": "### ANIO ###"},
@@ -51,11 +51,11 @@ Plantilla.plantillaTags = {
 }
 
 /// Plantilla para poner los datos de una persona en un tabla dentro de un formulario
-Plantilla.plantillaFormularioPersona = {}
+ALPINISMO.plantillaFormularioPersona = {}
 
 
 // Cabecera del formulario
-Plantilla.plantillaFormularioPersona.formulario = `
+ALPINISMO.plantillaFormularioPersona.formulario = `
 <form method='post' action=''>
     <table width="100%" class="listado-personas">
         <thead>
@@ -63,31 +63,31 @@ Plantilla.plantillaFormularioPersona.formulario = `
             <th width="15%">Grandes Cumbres alcanzadas</th><th width="20%">Picos 8Km</th><th width="10%"></th>
         </thead>
         <tbody>
-            <tr title="${Plantilla.plantillaTags.ID}">
+            <tr title="${ALPINISMO.plantillaTags.ID}">
                 <td><input type="text" class="form-persona-elemento" disabled id="form-persona-id"
-                        value="${Plantilla.plantillaTags.ID}" 
+                        value="${ALPINISMO.plantillaTags.ID}" 
                         name="id_persona"/></td>
                 <td><input type="text" class="form-persona-elemento editable" disabled
-                        id="form-persona-nombre" required value="${Plantilla.plantillaTags.NOMBRE}" 
+                        id="form-persona-nombre" required value="${ALPINISMO.plantillaTags.NOMBRE}" 
                         name="nombre_persona"/></td>
                 <td><input type="number" class="form-persona-elemento editable" disabled
-                        id="form-persona-dia" value="${Plantilla.plantillaTags.FECHA.DIA}" 
+                        id="form-persona-dia" value="${ALPINISMO.plantillaTags.FECHA.DIA}" 
                         name="dia_persona"/></td>
                 <td><input type="number" class="form-persona-elemento editable" disabled
-                        id="form-persona-mes" value="${Plantilla.plantillaTags.FECHA.MES}" 
+                        id="form-persona-mes" value="${ALPINISMO.plantillaTags.FECHA.MES}" 
                         name="mes_persona"/></td>
                 <td><input type="number" class="form-persona-elemento editable" disabled
-                        id="form-persona-anio" value="${Plantilla.plantillaTags.FECHA.ANIO}" 
+                        id="form-persona-anio" value="${ALPINISMO.plantillaTags.FECHA.ANIO}" 
                         name="anio_persona"/></td>
                 <td><input type="text" class="form-persona-elemento editable" disabled
-                        id="form-persona-pais" required value="${Plantilla.plantillaTags.PAIS}" 
+                        id="form-persona-pais" required value="${ALPINISMO.plantillaTags.PAIS}" 
                         name="pais_persona"/></td>
                 <td><input type="text" class="form-persona-elemento editable" disabled
                         id="form-persona-cumbres" required
-                        value="${Plantilla.plantillaTags.CUMBRES}" 
+                        value="${ALPINISMO.plantillaTags.CUMBRES}" 
                         name="cumbres_escaladas"/></td>
                 <td><input type="number" class="form-persona-elemento editable" disabled
-                        id="form-persona-picos_8km" required value="${Plantilla.plantillaTags["PICOS 8KM"]}" 
+                        id="form-persona-picos_8km" required value="${ALPINISMO.plantillaTags["PICOS 8KM"]}" 
                         name="picos_8km"/></td>
                 <td>
                     <div><a href="javascript:Plantilla.editar()" class="opcion-secundaria mostrar">Editar</a></div>
@@ -103,10 +103,10 @@ Plantilla.plantillaFormularioPersona.formulario = `
 `;
 
 /// Plantilla para poner los datos de varias personas dentro de una tabla
-Plantilla.plantillaTablaPersonas = {}
+ALPINISMO.plantillaTablaPersonas = {}
 
 // Cabecera de la tabla
-Plantilla.plantillaTablaPersonas.cabecera = `
+ALPINISMO.plantillaTablaPersonas.cabecera = `
             <form method='post' action=''>
                 <input type="text" value="" id="form-busqueda"/> 
                 <div><a href="javascript:Plantilla.listarBusqueda()" class="opcion-secundaria mostrar">Buscar</a></div>
@@ -125,7 +125,7 @@ Plantilla.plantillaTablaPersonas.cabecera = `
     `;
 
 // Cabecera de la tabla de nombres
-Plantilla.plantillaTablaPersonas.cabeceraNombres = `<table width="100%" class="listado-personas">
+ALPINISMO.plantillaTablaPersonas.cabeceraNombres = `<table width="100%" class="listado-personas">
 <thead>
     <th width="10%">Nombre</th>
 </thead>
@@ -134,29 +134,29 @@ Plantilla.plantillaTablaPersonas.cabeceraNombres = `<table width="100%" class="l
 `;
 
 // Elemento TR que muestra los datos de una persona
-Plantilla.plantillaTablaPersonas.cuerpo = `
-    <tr title="${Plantilla.plantillaTags.ID}">
-        <td>${Plantilla.plantillaTags.ID}</td>
-        <td>${Plantilla.plantillaTags.NOMBRE}</td>
-        <td>${Plantilla.plantillaTags.FECHA.DIA}/${Plantilla.plantillaTags.FECHA.MES}/${Plantilla.plantillaTags.FECHA.ANIO}</td>
-        <td>${Plantilla.plantillaTags.PAIS}</td>
-        <td>${Plantilla.plantillaTags.CUMBRES}</td>
-        <td>${Plantilla.plantillaTags["PICOS 8KM"]}</td>
+ALPINISMO.plantillaTablaPersonas.cuerpo = `
+    <tr title="${ALPINISMO.plantillaTags.ID}">
+        <td>${ALPINISMO.plantillaTags.ID}</td>
+        <td>${ALPINISMO.plantillaTags.NOMBRE}</td>
+        <td>${ALPINISMO.plantillaTags.FECHA.DIA}/${ALPINISMO.plantillaTags.FECHA.MES}/${ALPINISMO.plantillaTags.FECHA.ANIO}</td>
+        <td>${ALPINISMO.plantillaTags.PAIS}</td>
+        <td>${ALPINISMO.plantillaTags.CUMBRES}</td>
+        <td>${ALPINISMO.plantillaTags["PICOS 8KM"]}</td>
         <td>
-                    <div><a href="javascript:Plantilla.mostrar('${Plantilla.plantillaTags.ID}')" class="opcion-secundaria mostrar">Mostrar</a></div>
+                    <div><a href="javascript:Plantilla.mostrar('${ALPINISMO.plantillaTags.ID}')" class="opcion-secundaria mostrar">Mostrar</a></div>
         </td>
     </tr>
     `;
 
 // Elemento TR que muestra los datos de una persona
-Plantilla.plantillaTablaPersonas.cuerpoNombres = `
-    <tr title="${Plantilla.plantillaTags.NOMBRE}">
-        <td>${Plantilla.plantillaTags.NOMBRE}</td>
+ALPINISMO.plantillaTablaPersonas.cuerpoNombres = `
+    <tr title="${ALPINISMO.plantillaTags.NOMBRE}">
+        <td>${ALPINISMO.plantillaTags.NOMBRE}</td>
     </tr>
     `;
 
 // Pie de la tabla
-Plantilla.plantillaTablaPersonas.pie = `        </tbody>
+ALPINISMO.plantillaTablaPersonas.pie = `        </tbody>
              </table>
              `;
 
@@ -165,7 +165,7 @@ Plantilla.plantillaTablaPersonas.pie = `        </tbody>
  * @param {string} ruta Ruta a descargar
  * @param {función} callBackFn Función a la que se llamará una vez recibidos los datos.
  */
-Plantilla.descargarRuta = async function (ruta, callBackFn) {
+ALPINISMO.descargarRuta = async function (ruta, callBackFn) {
     let response = null
 
     // Intento conectar con el microservicio Plantilla
@@ -191,7 +191,7 @@ Plantilla.descargarRuta = async function (ruta, callBackFn) {
 /**
  * Función principal para mostrar los datos enviados por la ruta "home" de MS Plantilla
  */
-Plantilla.mostrarHome = function (datosDescargados) {
+ALPINISMO.mostrarHome = function (datosDescargados) {
     // Si no se ha proporcionado valor para datosDescargados
     datosDescargados = datosDescargados || this.datosDescargadosNulos
 
@@ -207,7 +207,7 @@ Plantilla.mostrarHome = function (datosDescargados) {
 /**
  * Función principal para mostrar los datos enviados por la ruta "acerca de" de MS Plantilla
  */
-Plantilla.mostrarAcercaDe = function (datosDescargados) {
+ALPINISMO.mostrarAcercaDe = function (datosDescargados) {
     // Si no se ha proporcionado valor para datosDescargados
     datosDescargados = datosDescargados || this.datosDescargadosNulos
 
@@ -239,17 +239,17 @@ Plantilla.mostrarAcercaDe = function (datosDescargados) {
  * @param {Persona} Persona Objeto con los datos de la persona que queremos escribir en el TR
  * @returns La plantilla del cuerpo de la tabla con los datos actualizados 
  */           
-Plantilla.sustituyeTags = function (plantilla, persona) {
+ALPINISMO.sustituyeTags = function (plantilla, persona) {
     //console.log(persona)
     return plantilla
-        .replace(new RegExp(Plantilla.plantillaTags.ID, 'g'), persona.ref['@ref'].id)
-        .replace(new RegExp(Plantilla.plantillaTags.NOMBRE, 'g'), persona.data.Nombre)
-        .replace(new RegExp(Plantilla.plantillaTags.FECHA.DIA, 'g'), persona.data.Fecha_nacimiento.Dia)
-        .replace(new RegExp(Plantilla.plantillaTags.FECHA.MES, 'g'), persona.data.Fecha_nacimiento.Mes)
-        .replace(new RegExp(Plantilla.plantillaTags.FECHA.ANIO, 'g'), persona.data.Fecha_nacimiento.Año)
-        .replace(new RegExp(Plantilla.plantillaTags.PAIS, 'g'), persona.data.País)
-        .replace(new RegExp(Plantilla.plantillaTags.CUMBRES, 'g'), persona.data.Grandes_Cumbre)
-        .replace(new RegExp(Plantilla.plantillaTags["PICOS 8KM"], 'g'), persona.data.cantidad_picos_8km)
+        .replace(new RegExp(ALPINISMO.plantillaTags.ID, 'g'), persona.ref['@ref'].id)
+        .replace(new RegExp(ALPINISMO.plantillaTags.NOMBRE, 'g'), persona.data.Nombre)
+        .replace(new RegExp(ALPINISMO.plantillaTags.FECHA.DIA, 'g'), persona.data.Fecha_nacimiento.Dia)
+        .replace(new RegExp(ALPINISMO.plantillaTags.FECHA.MES, 'g'), persona.data.Fecha_nacimiento.Mes)
+        .replace(new RegExp(ALPINISMO.plantillaTags.FECHA.ANIO, 'g'), persona.data.Fecha_nacimiento.Año)
+        .replace(new RegExp(ALPINISMO.plantillaTags.PAIS, 'g'), persona.data.País)
+        .replace(new RegExp(ALPINISMO.plantillaTags.CUMBRES, 'g'), persona.data.Grandes_Cumbre)
+        .replace(new RegExp(ALPINISMO.plantillaTags["PICOS 8KM"], 'g'), persona.data.cantidad_picos_8km)
 }
 
 /**
@@ -257,8 +257,8 @@ Plantilla.sustituyeTags = function (plantilla, persona) {
  * @param {Persona} Persona Objeto con los datos de la persona que queremos escribir en el TR
  * @returns La plantilla del cuerpo de la tabla con los datos actualizados 
  */
-Plantilla.plantillaTablaPersonas.actualiza = function (persona) {
-    return Plantilla.sustituyeTags(this.cuerpo, persona)
+ALPINISMO.plantillaTablaPersonas.actualiza = function (persona) {
+    return ALPINISMO.sustituyeTags(this.cuerpo, persona)
 }
 
 /**
@@ -266,8 +266,8 @@ Plantilla.plantillaTablaPersonas.actualiza = function (persona) {
  * @param {Persona} Persona Objeto con los nombres que queremos escribir en el TR
  * @returns La plantilla del cuerpo de la tabla con los datos actualizados 
  */
-Plantilla.plantillaTablaPersonas.actualizaNombres = function (persona) {
-    return Plantilla.sustituyeTags(this.cuerpoNombres, persona)
+ALPINISMO.plantillaTablaPersonas.actualizaNombres = function (persona) {
+    return ALPINISMO.sustituyeTags(this.cuerpoNombres, persona)
 }
 
 /**
@@ -275,8 +275,8 @@ Plantilla.plantillaTablaPersonas.actualizaNombres = function (persona) {
  * @param {Persona} Persona Objeto con los datos de la persona que queremos escribir en el TR
  * @returns La plantilla del cuerpo de la tabla con los datos actualizados 
  */
-Plantilla.plantillaFormularioPersona.actualiza = function (persona) {
-    return Plantilla.sustituyeTags(this.formulario, persona)
+ALPINISMO.plantillaFormularioPersona.actualiza = function (persona) {
+    return ALPINISMO.sustituyeTags(this.formulario, persona)
 }
 
 /**
@@ -284,7 +284,7 @@ Plantilla.plantillaFormularioPersona.actualiza = function (persona) {
  * @param {función} callBackFn Función a la que se llamará una vez recibidos los datos.
  */
 
-Plantilla.recupera = async function (callBackFn){
+ALPINISMO.recupera = async function (callBackFn){
     let response = null
 
     //Intento conectar con el microservicio personas
@@ -312,7 +312,7 @@ Plantilla.recupera = async function (callBackFn){
  * @param {String} idPersona Identificador de la persona a mostrar
  * @param {función} callBackFn Función a la que se llamará una vez recibidos los datos.
  */
-Plantilla.recuperaUnaPersona = async function (idPersona, callBackFn) {
+ALPINISMO.recuperaUnaPersona = async function (idPersona, callBackFn) {
     try {
         const url = Frontend.API_GATEWAY + "/plantilla/getPorId/" + idPersona
         const response = await fetch(url);
@@ -331,8 +331,8 @@ Plantilla.recuperaUnaPersona = async function (idPersona, callBackFn) {
  * @param {persona} Persona Objeto con los datos de la persona
  * @returns Una cadena con la tabla que tiene ya los datos actualizados
  */
-Plantilla.personaComoFormulario = function (persona) {
-    return Plantilla.plantillaFormularioPersona.actualiza( persona );
+ALPINISMO.personaComoFormulario = function (persona) {
+    return ALPINISMO.plantillaFormularioPersona.actualiza( persona );
 }
 
 /**
@@ -340,14 +340,14 @@ Plantilla.personaComoFormulario = function (persona) {
  * @param {Vector_de_personas} vector Vector con los datos de las personas a mostrar
  */
 
-Plantilla.imprimeMuchasPersonas = function (vector) {
+ALPINISMO.imprimeMuchasPersonas = function (vector) {
     // console.log(vector) // Para comprobar lo que hay en vector
 
     // Compongo el contenido que se va a mostrar dentro de la tabla
-    let msj = Plantilla.plantillaTablaPersonas.cabecera
+    let msj = ALPINISMO.plantillaTablaPersonas.cabecera
     
-    vector.forEach(e => msj += Plantilla.plantillaTablaPersonas.actualiza(e))
-    msj += Plantilla.plantillaTablaPersonas.pie
+    vector.forEach(e => msj += ALPINISMO.plantillaTablaPersonas.actualiza(e))
+    msj += ALPINISMO.plantillaTablaPersonas.pie
 
     //Borro toda la info de Article y la sustituyo por la que me interesa
     Frontend.Article.actualizar("Listado de personas", msj)
@@ -357,7 +357,7 @@ Plantilla.imprimeMuchasPersonas = function (vector) {
  * Función para mostrar en pantalla todas las personas que cumplen con el requisito de busqueda.
  * @param {Vector_de_personas} vector Vector con los datos de las personas a mostrar
  */
-Plantilla.imprimePersonasBusqueda = function (vector, buscar) {
+ALPINISMO.imprimePersonasBusqueda = function (vector, buscar) {
     // console.log(vector) // Para comprobar lo que hay en vector
     let vectorBusqueda = []
     let vectorBusquedaMostrar = {
@@ -375,10 +375,10 @@ Plantilla.imprimePersonasBusqueda = function (vector, buscar) {
     console.log("Vector que coinciden con los nombres: ", vectorBusqueda)
     // Compongo el contenido que se va a mostrar dentro de la tabla
     
-    let msj = Plantilla.plantillaTablaPersonas.cabecera
+    let msj = ALPINISMO.plantillaTablaPersonas.cabecera
     
-    vectorBusqueda.forEach(e => msj += Plantilla.plantillaTablaPersonas.actualiza(e))
-    msj += Plantilla.plantillaTablaPersonas.pie
+    vectorBusqueda.forEach(e => msj += ALPINISMO.plantillaTablaPersonas.actualiza(e))
+    msj += ALPINISMO.plantillaTablaPersonas.pie
 
     //Borro toda la info de Article y la sustituyo por la que me interesa
     Frontend.Article.actualizar("Resultado de la Búsqueda", msj)
@@ -390,7 +390,7 @@ Plantilla.imprimePersonasBusqueda = function (vector, buscar) {
  * @param {Vector_de_personas} vector Vector con los datos de las personas a mostrar
  */
 
-Plantilla.imprimeNombresOrdenados = function(vector) {
+ALPINISMO.imprimeNombresOrdenados = function(vector) {
     //console.log(vector) // Para comprobar lo que hay en vector
      
     vector.sort((a, b) => {
@@ -404,20 +404,20 @@ Plantilla.imprimeNombresOrdenados = function(vector) {
       });
       
     // Compongo el contenido que se va a mostrar dentro de la tabla
-    let msj = Plantilla.plantillaTablaPersonas.cabeceraNombres
+    let msj = ALPINISMO.plantillaTablaPersonas.cabeceraNombres
     
-    vector.forEach(e => msj += Plantilla.plantillaTablaPersonas.actualizaNombres(e))
-    msj += Plantilla.plantillaTablaPersonas.pie
+    vector.forEach(e => msj += ALPINISMO.plantillaTablaPersonas.actualizaNombres(e))
+    msj += ALPINISMO.plantillaTablaPersonas.pie
 
     //Borro toda la info de Article y la sustituyo por la que me interesa
     Frontend.Article.actualizar("Nombres de personas ordenadas alfabéticamente", msj)
 }
 
-Plantilla.imprimeNombres = function(vector) {
-    let msj = Plantilla.plantillaTablaPersonas.cabeceraNombres
+ALPINISMO.imprimeNombres = function(vector) {
+    let msj = ALPINISMO.plantillaTablaPersonas.cabeceraNombres
     
-    vector.forEach(e => msj += Plantilla.plantillaTablaPersonas.actualizaNombres(e))
-    msj += Plantilla.plantillaTablaPersonas.pie
+    vector.forEach(e => msj += ALPINISMO.plantillaTablaPersonas.actualizaNombres(e))
+    msj += ALPINISMO.plantillaTablaPersonas.pie
 
     //Borro toda la info de Article y la sustituyo por la que me interesa
     Frontend.Article.actualizar("Nombres de personas", msj)
@@ -428,15 +428,15 @@ Plantilla.imprimeNombres = function(vector) {
  * @param {Persona} persona Datos de la persona a mostrar
  */
 
-Plantilla.imprimeUnaPersona = function (persona) {
+ALPINISMO.imprimeUnaPersona = function (persona) {
     // console.log(persona) // Para comprobar lo que hay en vector
-    let msj = Plantilla.personaComoFormulario(persona);
+    let msj = ALPINISMO.personaComoFormulario(persona);
 
     // Borro toda la info de Article y la sustituyo por la que me interesa
     Frontend.Article.actualizar("Mostrar una persona", msj)
 
     // Actualiza el objeto que guarda los datos mostrados
-    Plantilla.almacenaDatos(persona)
+    ALPINISMO.almacenaDatos(persona)
 }
 
 /**
@@ -444,8 +444,8 @@ Plantilla.imprimeUnaPersona = function (persona) {
  * @param {Persona} persona Datos de la persona a almacenar
  */
 
-Plantilla.almacenaDatos = function (persona) {
-    Plantilla.personaMostrada = persona;
+ALPINISMO.almacenaDatos = function (persona) {
+    ALPINISMO.personaMostrada = persona;
 }
 
 /**
@@ -453,52 +453,52 @@ Plantilla.almacenaDatos = function (persona) {
  * @return Datos de la persona a almacenada
  */
 
-Plantilla.recuperaDatosAlmacenados = function () {
+ALPINISMO.recuperaDatosAlmacenados = function () {
     return this.personaMostrada;
 }
 
 /**
  * Función principal para responder al evento de elegir la opción "Home"
  */
-Plantilla.procesarHome = function () {
+ALPINISMO.procesarHome = function () {
     this.descargarRuta("/plantilla/", this.mostrarHome);
 }
 
 /**
  * Función principal para responder al evento de elegir la opción "Acerca de"
  */
-Plantilla.procesarAcercaDe = function () {
+ALPINISMO.procesarAcercaDe = function () {
     this.descargarRuta("/plantilla/acercade", this.mostrarAcercaDe);
 }
 
 /**
  * Función principal para recuperar las personas desde el MS y, posteriormente, imprimirlas.
  */
-Plantilla.listar = function (){
+ALPINISMO.listar = function (){
     //console.log("La busqueda es:",document.getElementById("form-busqueda").value)
-    Plantilla.recupera(Plantilla.imprimeMuchasPersonas);
+    ALPINISMO.recupera(ALPINISMO.imprimeMuchasPersonas);
 }
 
-Plantilla.listarBusqueda = function (){
-    Plantilla.recupera(Plantilla.imprimePersonasBusqueda);
+ALPINISMO.listarBusqueda = function (){
+    ALPINISMO.recupera(ALPINISMO.imprimePersonasBusqueda);
 }
 
-Plantilla.listarNombres = function (){
-    Plantilla.recupera(Plantilla.imprimeNombres)
+ALPINISMO.listarNombres = function (){
+    ALPINISMO.recupera(ALPINISMO.imprimeNombres)
 }
 
 /**
  * Función principal para recuperar las personas desde el MS y, ordenarlas por nombre e imprimirlas.
  */
-Plantilla.listarOrdenados = function (){
-    Plantilla.recupera(Plantilla.imprimeNombresOrdenados);
+ALPINISMO.listarOrdenados = function (){
+    ALPINISMO.recupera(ALPINISMO.imprimeNombresOrdenados);
 }
 
 /**
  * Función principal para mostrar los datos de una persona desde el MS y, posteriormente, imprimirla.
  * @param {String} idPersona Identificador de la persona a mostrar
  */
-Plantilla.mostrar = function (idPersona) {
+ALPINISMO.mostrar = function (idPersona) {
     for (let i = 0; i < TodasPersonas.data.length; i++) {
         //console.log(TodasPersonas.data[i].ref['@ref'].id);
         if(TodasPersonas.data[i].ref['@ref'].id == idPersona){
@@ -512,7 +512,7 @@ Plantilla.mostrar = function (idPersona) {
  * Función principal para visualizar el siguiente/anterior jugador.
  * @param {Boolean} siguiente Valor para saber si avanza o retrocede
  */
-Plantilla.siguiente = function (siguiente) {
+ALPINISMO.siguiente = function (siguiente) {
     if(siguiente){
         pos = (pos + 1) % TodasPersonas.data.length;
     }else{
@@ -530,10 +530,10 @@ Plantilla.siguiente = function (siguiente) {
  * @param {boolean} Deshabilitando Indica si queremos deshabilitar o habilitar los campos
  * @returns El propio objeto Personas, para concatenar llamadas
  */
-Plantilla.habilitarDeshabilitarCamposEditables = function (deshabilitando) {
+ALPINISMO.habilitarDeshabilitarCamposEditables = function (deshabilitando) {
     deshabilitando = (typeof deshabilitando === "undefined" || deshabilitando === null) ? true : deshabilitando
-    for (let campo in Plantilla.form) {
-        document.getElementById(Plantilla.form[campo]).disabled = deshabilitando
+    for (let campo in ALPINISMO.form) {
+        document.getElementById(ALPINISMO.form[campo]).disabled = deshabilitando
     }
     return this
 }
@@ -542,8 +542,8 @@ Plantilla.habilitarDeshabilitarCamposEditables = function (deshabilitando) {
  * Establece disable = true en los campos editables
  * @returns El propio objeto Personas, para concatenar llamadas
  */
-Plantilla.deshabilitarCamposEditables = function () {
-    Plantilla.habilitarDeshabilitarCamposEditables(true)
+ALPINISMO.deshabilitarCamposEditables = function () {
+    ALPINISMO.habilitarDeshabilitarCamposEditables(true)
     return this
 }
 
@@ -551,8 +551,8 @@ Plantilla.deshabilitarCamposEditables = function () {
  * Establece disable = false en los campos editables
  * @returns El propio objeto Personas, para concatenar llamadas
  */
-Plantilla.habilitarCamposEditables = function () {
-    Plantilla.habilitarDeshabilitarCamposEditables(false)
+ALPINISMO.habilitarCamposEditables = function () {
+    ALPINISMO.habilitarDeshabilitarCamposEditables(false)
     return this
 }
 
@@ -560,7 +560,7 @@ Plantilla.habilitarCamposEditables = function () {
  * ????Muestra las opciones que tiene el usuario cuando selecciona Editar
  * @returns El propio objeto Personas, para concatenar llamadas
  */
-Plantilla.opcionesMostrarOcultar = function (classname, mostrando) {
+ALPINISMO.opcionesMostrarOcultar = function (classname, mostrando) {
     let opciones = document.getElementsByClassName(classname)
     let claseQuitar = mostrando ? Frontend.CLASS_OCULTAR : Frontend.CLASS_MOSTRAR
     let claseAniadir = !mostrando ? Frontend.CLASS_OCULTAR : Frontend.CLASS_MOSTRAR
@@ -576,7 +576,7 @@ Plantilla.opcionesMostrarOcultar = function (classname, mostrando) {
  * Oculta todas las opciones secundarias
  * @returns El propio objeto para encadenar llamadas
  */
-Plantilla.ocultarOpcionesSecundarias = function () {
+ALPINISMO.ocultarOpcionesSecundarias = function () {
     this.opcionesMostrarOcultar("opcion-secundaria", false)
     return this
 }
@@ -585,7 +585,7 @@ Plantilla.ocultarOpcionesSecundarias = function () {
  * Muestra todas las opciones secundarias
  * @returns El propio objeto para encadenar llamadas
  */
-Plantilla.mostrarOpcionesSecundarias = function () {
+ALPINISMO.mostrarOpcionesSecundarias = function () {
     this.opcionesMostrarOcultar("opcion-secundaria", true)
     return this
 }
@@ -595,7 +595,7 @@ Plantilla.mostrarOpcionesSecundarias = function () {
  * Muestra las opciones que tiene el usuario cuando selecciona Editar
  * @returns El propio objeto Personas, para concatenar llamadas
  */
-Plantilla.mostrarOpcionesTerciariasEditar = function () {
+ALPINISMO.mostrarOpcionesTerciariasEditar = function () {
     this.opcionesMostrarOcultar("opcion-terciaria editar", true)
     return this
 }
@@ -604,7 +604,7 @@ Plantilla.mostrarOpcionesTerciariasEditar = function () {
  * Oculta las opciones que tiene el usuario cuando selecciona Editar
  * @returns El propio objeto Personas, para concatenar llamadas
  */
-Plantilla.ocultarOpcionesTerciariasEditar = function () {
+ALPINISMO.ocultarOpcionesTerciariasEditar = function () {
     this.opcionesMostrarOcultar("opcion-terciaria editar", false)
     return this
 }
@@ -612,7 +612,7 @@ Plantilla.ocultarOpcionesTerciariasEditar = function () {
 /**
  * Función que permite modificar los datos de una persona
  */
-Plantilla.editar = function () {
+ALPINISMO.editar = function () {
     this.ocultarOpcionesSecundarias()
     this.mostrarOpcionesTerciariasEditar()
     this.habilitarCamposEditables()
@@ -621,7 +621,7 @@ Plantilla.editar = function () {
 /**
  * Función que permite cancelar la acción sobre los datos de una persona
  */
-Plantilla.cancelar = function () {
+ALPINISMO.cancelar = function () {
     this.imprimeUnaPersona(this.recuperaDatosAlmacenados())
     this.deshabilitarCamposEditables()
     this.ocultarOpcionesTerciariasEditar()
@@ -631,7 +631,7 @@ Plantilla.cancelar = function () {
 /**
  * Función para guardar los nuevos datos de una persona
  */
-Plantilla.guardar = async function () {
+ALPINISMO.guardar = async function () {
     try {
         let url = Frontend.API_GATEWAY + "/plantilla/setTodo/"
         let id_persona = document.getElementById("form-persona-id").value
@@ -663,7 +663,7 @@ Plantilla.guardar = async function () {
             alert(persona)
         }
         */
-        Plantilla.mostrar(id_persona)
+        ALPINISMO.mostrar(id_persona)
     } catch (error) {
         alert("Error: No se han podido acceder al API Gateway " + error)
         //console.error(error)
