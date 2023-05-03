@@ -22,14 +22,24 @@
     <h1>Aplicación Microservicios Plantilla</h1>
     <!-- Barra de navegación de la aplicación -->
     <nav>
-        <a href="javascript:Plantilla.procesarHome()" class="opcion-principal"
+        <a href="javascript:ALPINISMO.procesarHome()" class="opcion-principal"
             title="Llama a la ruta / del MS Plantilla">Home</a>
-        <a href="javascript:Plantilla.procesarAcercaDe()" class="opcion-principal"
+        <a href="javascript:ALPINISMO.procesarAcercaDe()" class="opcion-principal"
             title="Llama a la ruta /acercade del MS Plantilla">Acerca de</a>
-        <a href="javascript:Plantilla.listar()" class="opcion-principal"
+        <a href="javascript:ALPINISMO.listar()" class="opcion-principal"
             title="Muestra el listado con todos los datos de los jugadores">Listar personas</a>
-        <a href="javascript:Plantilla.listarNombres()" class="opcion-principal"
+        <a href="javascript:ALPINISMO.listarNombres()" class="opcion-principal"
             title="Muestra el listado de los nombres de los jugadores ordenados alfabéticamente">Listar nombres</a>
+
+        <a href="javascript:Karate.procesarHome()" class="opcion-principal"
+            title="Llama a la ruta / del MS Plantilla">Home</a>
+        <a href="javascript:Karate.procesarAcercaDe()" class="opcion-principal"
+            title="Llama a la ruta /acercade del MS Plantilla">Acerca de</a>
+        <a href="javascript:Karate.listar()" class="opcion-principal"
+            title="Muestra el listado con todos los datos de los jugadores">Listar personas</a>
+        <a href="javascript:Karate.listarNombres()" class="opcion-principal"
+            title="Muestra el listado de los nombres de los jugadores ordenados alfabéticamente">Listar nombres</a>
+        
     </nav>
 
     <!-- 
@@ -54,11 +64,13 @@
 
     <!-- Cargamos ficheros JS propios del proyecto -->
     <script src="js/front-end.js"></script>
+    <script src="js/ms-ALPINISMO.js"></script>
     <script src="js/ms-KARATE.js"></script>
 
 
     <!-- Cargamos ficheros spec con los tests -->
     <script src="js/front-end-spec.js"></script>
+    <script src="js/ms-ALPINISMO-spec.js"></script>
     <script src="js/ms-KARATE-spec.js"></script>
 
 </body>
