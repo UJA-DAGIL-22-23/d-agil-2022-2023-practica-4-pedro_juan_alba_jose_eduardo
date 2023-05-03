@@ -90,15 +90,15 @@ ALPINISMO.plantillaFormularioPersona.formulario = `
                         id="form-persona-picos_8km" required value="${ALPINISMO.plantillaTags["PICOS 8KM"]}" 
                         name="picos_8km"/></td>
                 <td>
-                    <div><a href="javascript:Plantilla.editar()" class="opcion-secundaria mostrar">Editar</a></div>
-                    <div><a href="javascript:Plantilla.guardar()" class="opcion-terciaria editar ocultar">Guardar</a></div>
-                    <div><a href="javascript:Plantilla.cancelar()" class="opcion-terciaria editar ocultar">Cancelar</a></div>
+                    <div><a href="javascript:ALPINISMO.editar()" class="opcion-secundaria mostrar">Editar</a></div>
+                    <div><a href="javascript:ALPINISMO.guardar()" class="opcion-terciaria editar ocultar">Guardar</a></div>
+                    <div><a href="javascript:ALPINISMO.cancelar()" class="opcion-terciaria editar ocultar">Cancelar</a></div>
                 </td>
             </tr>
         </tbody>
     </table>
-    <center><div><a href="javascript:Plantilla.siguiente(false)" class="opcion-secundaria mostrar">Anterior</a>
-                <a href="javascript:Plantilla.siguiente(true)" class="opcion-secundaria mostrar">Siguiente</a></div></center>
+    <center><div><a href="javascript:ALPINISMO.siguiente(false)" class="opcion-secundaria mostrar">Anterior</a>
+                <a href="javascript:ALPINISMO.siguiente(true)" class="opcion-secundaria mostrar">Siguiente</a></div></center>
 </form>
 `;
 
@@ -109,7 +109,7 @@ ALPINISMO.plantillaTablaPersonas = {}
 ALPINISMO.plantillaTablaPersonas.cabecera = `
             <form method='post' action=''>
                 <input type="text" value="" id="form-busqueda"/> 
-                <div><a href="javascript:Plantilla.listarBusqueda()" class="opcion-secundaria mostrar">Buscar</a></div>
+                <div><a href="javascript:ALPINISMO.listarBusqueda()" class="opcion-secundaria mostrar">Buscar</a></div>
             </form>
                 <table width="100%" class="listado-personas">
                     <thead>
@@ -130,7 +130,7 @@ ALPINISMO.plantillaTablaPersonas.cabeceraNombres = `<table width="100%" class="l
     <th width="10%">Nombre</th>
 </thead>
 <tbody>
-<center><div><a href="javascript:Plantilla.listarOrdenados()" class="opcion-secundaria mostrar">Ordenar</a></div></center>
+<center><div><a href="javascript:ALPINISMO.listarOrdenados()" class="opcion-secundaria mostrar">Ordenar</a></div></center>
 `;
 
 // Elemento TR que muestra los datos de una persona
@@ -143,7 +143,7 @@ ALPINISMO.plantillaTablaPersonas.cuerpo = `
         <td>${ALPINISMO.plantillaTags.CUMBRES}</td>
         <td>${ALPINISMO.plantillaTags["PICOS 8KM"]}</td>
         <td>
-                    <div><a href="javascript:Plantilla.mostrar('${ALPINISMO.plantillaTags.ID}')" class="opcion-secundaria mostrar">Mostrar</a></div>
+                    <div><a href="javascript:ALPINISMO.mostrar('${ALPINISMO.plantillaTags.ID}')" class="opcion-secundaria mostrar">Mostrar</a></div>
         </td>
     </tr>
     `;
