@@ -1,5 +1,5 @@
 /**
- * @file ms-plantilla-spec.js
+ * @file ms-Hokey_Hielo-spec.js
  * @description Fichero TDD para probar todo lo relacionado con MS Plantilla en el front-end
  * @author Víctor M. Rivas <vrivas@ujaen.es>
  * @date 03-feb-2023
