@@ -214,14 +214,14 @@ Karate.mostrarAcercaDe = function (datosDescargados) {
  * Función principal para responder al evento de elegir la opción "Home"
  */
 Karate.procesarHome = function () {
-    this.descargarRuta("/plantilla/", this.mostrarHome);
+    this.descargarRuta("/karate/", this.mostrarHome);
 }
 
 /**
  * Función principal para responder al evento de elegir la opción "Acerca de"
  */
 Karate.procesarAcercaDe = function () {
-    this.descargarRuta("/plantilla/acercade", this.mostrarAcercaDe);
+    this.descargarRuta("/karate/acercade", this.mostrarAcercaDe);
 }
 
 
@@ -373,7 +373,7 @@ Karate.mostrarDeportistas = async function (callBackFn) {
 
     // Intento conectar con el microservicio plantilla
     try {
-        const url = Frontend.API_GATEWAY + "/plantilla/getTodosDeportistas"
+        const url = Frontend.API_GATEWAY + "/karate/getTodosDeportistas"
         response = await fetch(url)
 
     } catch (error) {
@@ -472,7 +472,7 @@ Karate.imprimeUnDeportista = function (deportista) {
  */
 Karate.recuperaUnDeportista = async function (idDeportista, callBackFn) {
     try {
-        const url = Frontend.API_GATEWAY + "/plantilla/getPorId/" + idDeportista
+        const url = Frontend.API_GATEWAY + "/karate/getPorId/" + idDeportista
         const response = await fetch(url);
         if (response) {
             const deportista = await response.json()
@@ -498,7 +498,7 @@ Karate.mostrar = function (idDeportista) {
  */
 Karate.guardar = async function () {
     try {
-        let url = Frontend.API_GATEWAY + "/plantilla/nuevoDeportista/"
+        let url = Frontend.API_GATEWAY + "/karate/nuevoDeportista/"
         let id_persona = document.getElementById("form-persona-nombre").value
 
         let palmares = document.getElementById("form-persona-palmares").value;
@@ -552,7 +552,7 @@ Karate.añadirNuevoDeportista = function(){
 
 Karate.eliminar = async function(idDeportista){
     try {
-        const url = Frontend.API_GATEWAY + "/plantilla/eliminarDeportista/" + idDeportista
+        const url = Frontend.API_GATEWAY + "/karate/eliminarDeportista/" + idDeportista
 
         const response = await fetch(url, {
             method: 'post', // *GET, POST, PUT, DELETE, etc.
@@ -575,7 +575,7 @@ Karate.eliminar = async function(idDeportista){
  */
 Karate.guardarDatosEditados = async function () {
     try {
-        let url = Frontend.API_GATEWAY + "/plantilla/editarDeportista/"
+        let url = Frontend.API_GATEWAY + "/karate/editarDeportista/"
         let id_persona = document.getElementById("form-personaEditada-id").value
 
         const response = await fetch(url, {

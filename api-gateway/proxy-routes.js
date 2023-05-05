@@ -8,6 +8,16 @@
 
 const ROUTES = [
     {
+        url: '/karate',
+        proxy: {
+            target: "http://localhost:8003",
+            changeOrigin: true,
+            pathRewrite: {
+                [`^/karate`]: '',
+            },
+        }
+    },
+    {
         url: '/alpinismo',
         proxy: {
             target: "http://localhost:8002",
