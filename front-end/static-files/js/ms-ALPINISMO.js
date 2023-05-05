@@ -289,7 +289,7 @@ ALPINISMO.recupera = async function (callBackFn){
 
     //Intento conectar con el microservicio personas
     try{
-        const url = Frontend.API_GATEWAY + "/plantilla/getTodas"
+        const url = Frontend.API_GATEWAY + "/alpinismo/getTodas"
         response = await fetch(url)
     }catch(error){
         alert("Error: No se han podido acceder al API Gateway")
@@ -314,7 +314,7 @@ ALPINISMO.recupera = async function (callBackFn){
  */
 ALPINISMO.recuperaUnaPersona = async function (idPersona, callBackFn) {
     try {
-        const url = Frontend.API_GATEWAY + "/plantilla/getPorId/" + idPersona
+        const url = Frontend.API_GATEWAY + "/alpinismo/getPorId/" + idPersona
         const response = await fetch(url);
         if (response) {
             const persona = await response.json()
@@ -461,14 +461,14 @@ ALPINISMO.recuperaDatosAlmacenados = function () {
  * Función principal para responder al evento de elegir la opción "Home"
  */
 ALPINISMO.procesarHome = function () {
-    this.descargarRuta("/plantilla/", this.mostrarHome);
+    this.descargarRuta("/alpinismo/", this.mostrarHome);
 }
 
 /**
  * Función principal para responder al evento de elegir la opción "Acerca de"
  */
 ALPINISMO.procesarAcercaDe = function () {
-    this.descargarRuta("/plantilla/acercade", this.mostrarAcercaDe);
+    this.descargarRuta("/alpinismo/acercade", this.mostrarAcercaDe);
 }
 
 /**
@@ -633,7 +633,7 @@ ALPINISMO.cancelar = function () {
  */
 ALPINISMO.guardar = async function () {
     try {
-        let url = Frontend.API_GATEWAY + "/plantilla/setTodo/"
+        let url = Frontend.API_GATEWAY + "/alpinismo/setTodo/"
         let id_persona = document.getElementById("form-persona-id").value
         const response = await fetch(url, {
             method: 'POST', // *GET, POST, PUT, DELETE, etc.

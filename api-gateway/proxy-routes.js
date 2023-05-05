@@ -8,12 +8,12 @@
 
 const ROUTES = [
     {
-        url: '/plantilla',
+        url: '/alpinismo',
         proxy: {
             target: "http://localhost:8002",
             changeOrigin: true,
             pathRewrite: {
-                [`^/plantilla`]: '',
+                [`^/alpinismo`]: '',
             },
         }
     }

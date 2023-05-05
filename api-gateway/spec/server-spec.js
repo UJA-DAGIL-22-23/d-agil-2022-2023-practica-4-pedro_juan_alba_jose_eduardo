@@ -15,7 +15,7 @@ describe('API Gateway: rutas estáticas', () => {
   describe('Rutas estáticas de MS Plantilla', () => {
     it('Devuelve MS Plantilla Home Page', (done) => {
       supertest(app)
-        .get('/plantilla/')
+        .get('/alpinismo/')
         .expect(200)
         .expect('Content-Type', /json/)
         .expect(function (res) {
@@ -28,7 +28,7 @@ describe('API Gateway: rutas estáticas', () => {
     });
     it('Devuelve MS Plantilla Acerca De', (done) => {
       supertest(app)
-        .get('/plantilla/acercade')
+        .get('/alpinismo/acercade')
         .expect(200)
         .expect('Content-Type', /json/)
         .expect(function (res) {
@@ -46,7 +46,7 @@ describe('API Gateway: acceso a', () => {
   describe('BBDD Personas', () => {
     it(' > Obtener todas las personas: debe tener un campo data que es un array de 10 objetos', (done) => {
       supertest(app)
-        .get('/plantilla/getTodas')
+        .get('/alpinismo/getTodas')
         .expect(200)
         .expect('Content-Type', /json/)
         .expect(function (res) {
@@ -60,7 +60,7 @@ describe('API Gateway: acceso a', () => {
 
     it(' > Obtener una persona por su id: debe tener un campo data y a su vez un País que es España', (done) => {
       supertest(app)
-        .get('/plantilla/getPorId/359742972671033548')
+        .get('/alpinismo/getPorId/359742972671033548')
         .expect(200)
         .expect('Content-Type', /json/)
         .expect(function (res) {
