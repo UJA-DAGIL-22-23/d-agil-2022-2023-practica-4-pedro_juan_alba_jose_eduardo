@@ -8,12 +8,12 @@
 // SPECS para Jasmine
 
 // Constantes para usar en las pruebas
-const elementoTitulo = document.getElementById(Frontend.ID_SECCION_PRINCIPAL_TITULO)
-const elementoContenido = document.getElementById(Frontend.ID_SECCION_PRINCIPAL_CONTENIDO)
-const TITULO_HOME = "Plantilla Home"
-const TITULO_ACERCA_DE = "Plantilla Acerca de"
+const alpinismoTitulo = document.getElementById(Frontend.ID_SECCION_PRINCIPAL_TITULO)
+const alpinismoContenido = document.getElementById(Frontend.ID_SECCION_PRINCIPAL_CONTENIDO)
+const TITULO_HOME_ALPINISMO = "Plantilla Home"
+const TITULO_ACERCA_DE_ALPINISMO = "Plantilla Acerca de"
 
-const datosDescargadosPrueba = {
+const datosDescargadosPruebaAlpinismo = {
     mensaje: "Mensaje de prueba descargado",
     autor: "Prueba de autor",
     email: "Prueba de email",
@@ -39,35 +39,35 @@ describe("ALPINISMO.mostrarHome: ", function () {
     it("muestra datos nulos cuando le pasamos un valor nulo",
         function () {
             ALPINISMO.mostrarHome()
-            expect(elementoTitulo.innerHTML).toBe(TITULO_HOME)
-            expect(elementoContenido.innerHTML).toBe(ALPINISMO.datosDescargadosNulos.mensaje)
+            expect(alpinismoTitulo.innerHTML).toBe(TITULO_HOME_ALPINISMO)
+            expect(alpinismoContenido.innerHTML).toBe(ALPINISMO.datosDescargadosNulos.mensaje)
         })
 
     it("muestra datos nulos cuando le pasamos un valor que no es un objeto",
         function () {
             ALPINISMO.mostrarHome(23)
-            expect(elementoTitulo.innerHTML).toBe(TITULO_HOME)
-            expect(elementoContenido.innerHTML).toBe(ALPINISMO.datosDescargadosNulos.mensaje)
+            expect(alpinismoTitulo.innerHTML).toBe(TITULO_HOME_ALPINISMO)
+            expect(alpinismoContenido.innerHTML).toBe(ALPINISMO.datosDescargadosNulos.mensaje)
         })
 
     it("muestra datos nulos cuando le pasamos un objeto que no tiene campo mensaje",
         function () {
             // Objeto vacío
             ALPINISMO.mostrarHome({})
-            expect(elementoTitulo.innerHTML).toBe(TITULO_HOME)
-            expect(elementoContenido.innerHTML).toBe(ALPINISMO.datosDescargadosNulos.mensaje)
+            expect(alpinismoTitulo.innerHTML).toBe(TITULO_HOME_ALPINISMO)
+            expect(alpinismoContenido.innerHTML).toBe(ALPINISMO.datosDescargadosNulos.mensaje)
 
             // Objeto sin campo mensaje
             ALPINISMO.mostrarHome({ foo: "bar" })
-            expect(elementoTitulo.innerHTML).toBe(TITULO_HOME)
-            expect(elementoContenido.innerHTML).toBe(ALPINISMO.datosDescargadosNulos.mensaje)
+            expect(alpinismoTitulo.innerHTML).toBe(TITULO_HOME_ALPINISMO)
+            expect(alpinismoContenido.innerHTML).toBe(ALPINISMO.datosDescargadosNulos.mensaje)
         })
 
     it("muestra correctamente el título y el mensaje",
         function () {
-            ALPINISMO.mostrarHome(datosDescargadosPrueba)
-            expect(elementoTitulo.innerHTML).toBe(TITULO_HOME)
-            expect(elementoContenido.innerHTML).toBe(datosDescargadosPrueba.mensaje)
+            ALPINISMO.mostrarHome(datosDescargadosPruebaAlpinismo)
+            expect(alpinismoTitulo.innerHTML).toBe(TITULO_HOME_ALPINISMO)
+            expect(alpinismoContenido.innerHTML).toBe(datosDescargadosPruebaAlpinismo.mensaje)
         })
 })
 
@@ -76,50 +76,50 @@ describe("ALPINISMO.mostrarAcercaDe: ", function () {
     it("muestra datos nulos cuando le pasamos un valor nulo",
         function () {
             ALPINISMO.mostrarAcercaDe()
-            expect(elementoTitulo.innerHTML).toBe(TITULO_ACERCA_DE)
-            expect(elementoContenido.innerHTML.search(ALPINISMO.datosDescargadosNulos.mensaje) >= 0).toBeTrue()
+            expect(alpinismoTitulo.innerHTML).toBe(TITULO_ACERCA_DE_ALPINISMO)
+            expect(alpinismoContenido.innerHTML.search(ALPINISMO.datosDescargadosNulos.mensaje) >= 0).toBeTrue()
         })
 
     it("muestra datos nulos cuando le pasamos un valor que no es un objeto",
         function () {
             ALPINISMO.mostrarAcercaDe(23)
-            expect(elementoTitulo.innerHTML).toBe(TITULO_ACERCA_DE)
-            expect(elementoContenido.innerHTML.search(ALPINISMO.datosDescargadosNulos.mensaje) >= 0).toBeTrue()
+            expect(alpinismoTitulo.innerHTML).toBe(TITULO_ACERCA_DE_ALPINISMO)
+            expect(alpinismoContenido.innerHTML.search(ALPINISMO.datosDescargadosNulos.mensaje) >= 0).toBeTrue()
         })
 
     it("muestra datos nulos cuando le pasamos un objeto que no tiene campo mensaje o autor o email o fecha ",
         function () {
             // Objeto vacío
             ALPINISMO.mostrarAcercaDe({})
-            expect(elementoTitulo.innerHTML).toBe(TITULO_ACERCA_DE)
-            expect(elementoContenido.innerHTML.search(ALPINISMO.datosDescargadosNulos.mensaje) >= 0).toBeTrue()
+            expect(alpinismoTitulo.innerHTML).toBe(TITULO_ACERCA_DE_ALPINISMO)
+            expect(alpinismoContenido.innerHTML.search(ALPINISMO.datosDescargadosNulos.mensaje) >= 0).toBeTrue()
 
             // Objeto sin campo mensaje
             ALPINISMO.mostrarAcercaDe({ autor: "un autor", email: "un email", fecha: "una fecha" })
-            expect(elementoTitulo.innerHTML).toBe(TITULO_ACERCA_DE)
-            expect(elementoContenido.innerHTML.search(ALPINISMO.datosDescargadosNulos.mensaje) >= 0).toBeTrue()
+            expect(alpinismoTitulo.innerHTML).toBe(TITULO_ACERCA_DE_ALPINISMO)
+            expect(alpinismoContenido.innerHTML.search(ALPINISMO.datosDescargadosNulos.mensaje) >= 0).toBeTrue()
             // Objeto sin campo autor
             ALPINISMO.mostrarAcercaDe({ mensaje: "un mensaje", email: "un email", fecha: "una fecha" })
-            expect(elementoTitulo.innerHTML).toBe(TITULO_ACERCA_DE)
-            expect(elementoContenido.innerHTML.search(ALPINISMO.datosDescargadosNulos.mensaje) >= 0).toBeTrue()
+            expect(alpinismoTitulo.innerHTML).toBe(TITULO_ACERCA_DE_ALPINISMO)
+            expect(alpinismoContenido.innerHTML.search(ALPINISMO.datosDescargadosNulos.mensaje) >= 0).toBeTrue()
             // Objeto sin campo email
             ALPINISMO.mostrarAcercaDe({ mensaje: "un mensaje", autor: "un autor", fecha: "una fecha" })
-            expect(elementoTitulo.innerHTML).toBe(TITULO_ACERCA_DE)
-            expect(elementoContenido.innerHTML.search(ALPINISMO.datosDescargadosNulos.mensaje) >= 0).toBeTrue()
+            expect(alpinismoTitulo.innerHTML).toBe(TITULO_ACERCA_DE_ALPINISMO)
+            expect(alpinismoContenido.innerHTML.search(ALPINISMO.datosDescargadosNulos.mensaje) >= 0).toBeTrue()
             // Objeto sin campo fecha
             ALPINISMO.mostrarAcercaDe({ mensaje: "un mensaje", autor: "un autor", email: "un email" })
-            expect(elementoTitulo.innerHTML).toBe(TITULO_ACERCA_DE)
-            expect(elementoContenido.innerHTML.search(ALPINISMO.datosDescargadosNulos.mensaje) >= 0).toBeTrue()
+            expect(alpinismoTitulo.innerHTML).toBe(TITULO_ACERCA_DE_ALPINISMO)
+            expect(alpinismoContenido.innerHTML.search(ALPINISMO.datosDescargadosNulos.mensaje) >= 0).toBeTrue()
         })
     it("muestra correctamente el título y el mensaje conteniendo el autor, el email y la fecha",
         function () {
-            ALPINISMO.mostrarAcercaDe(datosDescargadosPrueba)
-            expect(elementoTitulo.innerHTML).toBe(TITULO_ACERCA_DE)
+            ALPINISMO.mostrarAcercaDe(datosDescargadosPruebaAlpinismo)
+            expect(alpinismoTitulo.innerHTML).toBe(TITULO_ACERCA_DE_ALPINISMO)
 
             // Comprobamos que al buscar el autor, el email y la fecha de prueba los encuentra dentro del contenido del article
-            expect(elementoContenido.innerHTML.search(datosDescargadosPrueba.autor) >= 0).toBeTrue()
-            expect(elementoContenido.innerHTML.search(datosDescargadosPrueba.email) >= 0).toBeTrue()
-            expect(elementoContenido.innerHTML.search(datosDescargadosPrueba.fecha) >= 0).toBeTrue()
+            expect(alpinismoContenido.innerHTML.search(datosDescargadosPruebaAlpinismo.autor) >= 0).toBeTrue()
+            expect(alpinismoContenido.innerHTML.search(datosDescargadosPruebaAlpinismo.email) >= 0).toBeTrue()
+            expect(alpinismoContenido.innerHTML.search(datosDescargadosPruebaAlpinismo.fecha) >= 0).toBeTrue()
         })
 })
 
