@@ -8,12 +8,12 @@
 // SPECS para Jasmine
 
 // Constantes para usar en las pruebas
-const elementoTitulo = document.getElementById(Frontend.ID_SECCION_PRINCIPAL_TITULO)
-const elementoContenido = document.getElementById(Frontend.ID_SECCION_PRINCIPAL_CONTENIDO)
-const TITULO_HOME = "Karate Home"
-const TITULO_ACERCA_DE = "Karate Acerca de"
+const tituloKarate = document.getElementById(Frontend.ID_SECCION_PRINCIPAL_TITULO)
+const elementoKarate = document.getElementById(Frontend.ID_SECCION_PRINCIPAL_CONTENIDO)
+const TITULO_KARATE = "Karate Home"
+const TITULO_ACERCA_DE_KARATE = "Karate Acerca de"
 
-const datosDescargadosPrueba = {
+const datosDescargadosPruebaKarate = {
     mensaje: "Mensaje de prueba descargado",
     autor: "Prueba de autor",
     email: "Prueba de email",
@@ -39,35 +39,35 @@ describe("Karate.mostrarHome: ", function () {
     it("muestra datos nulos cuando le pasamos un valor nulo",
         function () {
             Karate.mostrarHome()
-            expect(elementoTitulo.innerHTML).toBe(TITULO_HOME)
-            expect(elementoContenido.innerHTML).toBe(Karate.datosDescargadosNulos.mensaje)
+            expect(tituloKarate.innerHTML).toBe(TITULO_KARATE)
+            expect(elementoKarate.innerHTML).toBe(Karate.datosDescargadosNulos.mensaje)
         })
 
     it("muestra datos nulos cuando le pasamos un valor que no es un objeto",
         function () {
             Karate.mostrarHome(23)
-            expect(elementoTitulo.innerHTML).toBe(TITULO_HOME)
-            expect(elementoContenido.innerHTML).toBe(Karate.datosDescargadosNulos.mensaje)
+            expect(tituloKarate.innerHTML).toBe(TITULO_KARATE)
+            expect(elementoKarate.innerHTML).toBe(Karate.datosDescargadosNulos.mensaje)
         })
 
     it("muestra datos nulos cuando le pasamos un objeto que no tiene campo mensaje",
         function () {
             // Objeto vacío
             Karate.mostrarHome({})
-            expect(elementoTitulo.innerHTML).toBe(TITULO_HOME)
-            expect(elementoContenido.innerHTML).toBe(Karate.datosDescargadosNulos.mensaje)
+            expect(tituloKarate.innerHTML).toBe(TITULO_KARATE)
+            expect(elementoKarate.innerHTML).toBe(Karate.datosDescargadosNulos.mensaje)
 
             // Objeto sin campo mensaje
             Karate.mostrarHome({ foo: "bar" })
-            expect(elementoTitulo.innerHTML).toBe(TITULO_HOME)
-            expect(elementoContenido.innerHTML).toBe(Karate.datosDescargadosNulos.mensaje)
+            expect(tituloKarate.innerHTML).toBe(TITULO_KARATE)
+            expect(elementoKarate.innerHTML).toBe(Karate.datosDescargadosNulos.mensaje)
         })
 
     it("muestra correctamente el título y el mensaje",
         function () {
-            Karate.mostrarHome(datosDescargadosPrueba)
-            expect(elementoTitulo.innerHTML).toBe(TITULO_HOME)
-            expect(elementoContenido.innerHTML).toBe(datosDescargadosPrueba.mensaje)
+            Karate.mostrarHome(datosDescargadosPruebaKarate)
+            expect(tituloKarate.innerHTML).toBe(TITULO_KARATE)
+            expect(elementoKarate.innerHTML).toBe(datosDescargadosPruebaKarate.mensaje)
         })
 })
 
@@ -76,50 +76,50 @@ describe("Karate.mostrarAcercaDe: ", function () {
     it("muestra datos nulos cuando le pasamos un valor nulo",
         function () {
             Karate.mostrarAcercaDe()
-            expect(elementoTitulo.innerHTML).toBe(TITULO_ACERCA_DE)
-            expect(elementoContenido.innerHTML.search(Karate.datosDescargadosNulos.mensaje) >= 0).toBeTrue()
+            expect(tituloKarate.innerHTML).toBe(TITULO_ACERCA_DE_KARATE)
+            expect(elementoKarate.innerHTML.search(Karate.datosDescargadosNulos.mensaje) >= 0).toBeTrue()
         })
 
     it("muestra datos nulos cuando le pasamos un valor que no es un objeto",
         function () {
             Karate.mostrarAcercaDe(23)
-            expect(elementoTitulo.innerHTML).toBe(TITULO_ACERCA_DE)
-            expect(elementoContenido.innerHTML.search(Karate.datosDescargadosNulos.mensaje) >= 0).toBeTrue()
+            expect(tituloKarate.innerHTML).toBe(TITULO_ACERCA_DE_KARATE)
+            expect(elementoKarate.innerHTML.search(Karate.datosDescargadosNulos.mensaje) >= 0).toBeTrue()
         })
 
     it("muestra datos nulos cuando le pasamos un objeto que no tiene campo mensaje o autor o email o fecha ",
         function () {
             // Objeto vacío
             Karate.mostrarAcercaDe({})
-            expect(elementoTitulo.innerHTML).toBe(TITULO_ACERCA_DE)
-            expect(elementoContenido.innerHTML.search(Karate.datosDescargadosNulos.mensaje) >= 0).toBeTrue()
+            expect(tituloKarate.innerHTML).toBe(TITULO_ACERCA_DE_KARATE)
+            expect(elementoKarate.innerHTML.search(Karate.datosDescargadosNulos.mensaje) >= 0).toBeTrue()
 
             // Objeto sin campo mensaje
             Karate.mostrarAcercaDe({ autor: "un autor", email: "un email", fecha: "una fecha" })
-            expect(elementoTitulo.innerHTML).toBe(TITULO_ACERCA_DE)
-            expect(elementoContenido.innerHTML.search(Karate.datosDescargadosNulos.mensaje) >= 0).toBeTrue()
+            expect(tituloKarate.innerHTML).toBe(TITULO_ACERCA_DE_KARATE)
+            expect(elementoKarate.innerHTML.search(Karate.datosDescargadosNulos.mensaje) >= 0).toBeTrue()
             // Objeto sin campo autor
             Karate.mostrarAcercaDe({ mensaje: "un mensaje", email: "un email", fecha: "una fecha" })
-            expect(elementoTitulo.innerHTML).toBe(TITULO_ACERCA_DE)
-            expect(elementoContenido.innerHTML.search(Karate.datosDescargadosNulos.mensaje) >= 0).toBeTrue()
+            expect(tituloKarate.innerHTML).toBe(TITULO_ACERCA_DE_KARATE)
+            expect(elementoKarate.innerHTML.search(Karate.datosDescargadosNulos.mensaje) >= 0).toBeTrue()
             // Objeto sin campo email
             Karate.mostrarAcercaDe({ mensaje: "un mensaje", autor: "un autor", fecha: "una fecha" })
-            expect(elementoTitulo.innerHTML).toBe(TITULO_ACERCA_DE)
-            expect(elementoContenido.innerHTML.search(Karate.datosDescargadosNulos.mensaje) >= 0).toBeTrue()
+            expect(tituloKarate.innerHTML).toBe(TITULO_ACERCA_DE_KARATE)
+            expect(elementoKarate.innerHTML.search(Karate.datosDescargadosNulos.mensaje) >= 0).toBeTrue()
             // Objeto sin campo fecha
             Karate.mostrarAcercaDe({ mensaje: "un mensaje", autor: "un autor", email: "un email" })
-            expect(elementoTitulo.innerHTML).toBe(TITULO_ACERCA_DE)
-            expect(elementoContenido.innerHTML.search(Karate.datosDescargadosNulos.mensaje) >= 0).toBeTrue()
+            expect(tituloKarate.innerHTML).toBe(TITULO_ACERCA_DE_KARATE)
+            expect(elementoKarate.innerHTML.search(Karate.datosDescargadosNulos.mensaje) >= 0).toBeTrue()
         })
     it("muestra correctamente el título y el mensaje conteniendo el autor, el email y la fecha",
         function () {
-            Karate.mostrarAcercaDe(datosDescargadosPrueba)
-            expect(elementoTitulo.innerHTML).toBe(TITULO_ACERCA_DE)
+            Karate.mostrarAcercaDe(datosDescargadosPruebaKarate)
+            expect(tituloKarate.innerHTML).toBe(TITULO_ACERCA_DE_KARATE)
 
             // Comprobamos que al buscar el autor, el email y la fecha de prueba los encuentra dentro del contenido del article
-            expect(elementoContenido.innerHTML.search(datosDescargadosPrueba.autor) >= 0).toBeTrue()
-            expect(elementoContenido.innerHTML.search(datosDescargadosPrueba.email) >= 0).toBeTrue()
-            expect(elementoContenido.innerHTML.search(datosDescargadosPrueba.fecha) >= 0).toBeTrue()
+            expect(elementoKarate.innerHTML.search(datosDescargadosPruebaKarate.autor) >= 0).toBeTrue()
+            expect(elementoKarate.innerHTML.search(datosDescargadosPruebaKarate.email) >= 0).toBeTrue()
+            expect(elementoKarate.innerHTML.search(datosDescargadosPruebaKarate.fecha) >= 0).toBeTrue()
         })
 })
 
@@ -196,7 +196,7 @@ let formulario = `
             <td>${Karate.plantillaTags.EDAD}</td>
             <td>${Karate.plantillaTags.NACIMIENTO}</td>
             <td>${Karate.plantillaTags.FECHA.DIA}/${Karate.plantillaTags.FECHA.MES}/${Karate.plantillaTags.FECHA.ANIO}</td>
-            <td>${PlKarateantilla.plantillaTags.PALMARES_MUNDIALES}</td>
+            <td>${Karate.plantillaTags.PALMARES_MUNDIALES}</td>
             <td>
                 <div><a href="javascript:Karate.eliminar('${Karate.plantillaTags.ID}')" class="opcion-secundaria mostrar">Eliminar</a></div>
                 <div><a href="javascript:Karate.procesarHome()" class="opcion-secundaria mostrar">Volver a home</a></div>
