@@ -11,10 +11,10 @@
 
 
 /// Creo el espacio de nombres
-let Plantilla = {};
+let Hokey_Hielo = {};
 
 // Plantilla de datosDescargados vacíos
-Plantilla.datosDescargadosNulos = {
+Hokey_Hielo.datosDescargadosNulos = {
     mensaje: "Datos Descargados No válidos",
     autor: "",
     posicion: "",
@@ -29,7 +29,7 @@ Plantilla.datosDescargadosNulos = {
  * @param {string} ruta Ruta a descargar
  * @param {función} callBackFn Función a la que se llamará una vez recibidos los datos.
  */
-Plantilla.descargarRuta = async function (ruta, callBackFn) {
+Hokey_Hielo.descargarRuta = async function (ruta, callBackFn) {
     let response = null
 
     // Intento conectar con el microservicio Plantilla
@@ -55,7 +55,7 @@ Plantilla.descargarRuta = async function (ruta, callBackFn) {
 /**
  * Función principal para mostrar los datos enviados por la ruta "home" de MS Plantilla
  */
-Plantilla.mostrarHome = function (datosDescargados) {
+Hokey_Hielo.mostrarHome = function (datosDescargados) {
     // Si no se ha proporcionado valor para datosDescargados
     datosDescargados = datosDescargados || this.datosDescargadosNulos
 
@@ -71,7 +71,7 @@ Plantilla.mostrarHome = function (datosDescargados) {
 /**
  * Función principal para mostrar los datos enviados por la ruta "acerca de" de MS Plantilla
  */
-Plantilla.mostrarAcercaDe = function (datosDescargados) {
+Hokey_Hielo.mostrarAcercaDe = function (datosDescargados) {
     // Si no se ha proporcionado valor para datosDescargados
     datosDescargados = datosDescargados || this.datosDescargadosNulos
 
@@ -101,19 +101,19 @@ Plantilla.mostrarAcercaDe = function (datosDescargados) {
 /**
  * Función principal para responder al evento de elegir la opción "Home"
  */
-Plantilla.procesarHome = function () {
-    this.descargarRuta("/plantilla/", this.mostrarHome);
+Hokey_Hielo.procesarHome = function () {
+    this.descargarRuta("/hokey/", this.mostrarHome);
 }
 
 /**
  * Función principal para responder al evento de elegir la opción "Acerca de"
  */
-Plantilla.procesarAcercaDe = function () {
-    this.descargarRuta("/plantilla/acercade", this.mostrarAcercaDe);
+Hokey_Hielo.procesarAcercaDe = function () {
+    this.descargarRuta("/hokey/acercade", this.mostrarAcercaDe);
 }
 
 /// Nombre de los campos del formulario para editar una persona
-Plantilla.form = {
+Hokey_Hielo.form = {
     NOMBRE: "form-persona-nombre",
     APELLIDOS: "form-persona-apellidos",
     POSICION: "form-persona-posicion",
@@ -121,10 +121,10 @@ Plantilla.form = {
 }
 
 /// Objeto para almacenar los datos de la persona que se está mostrando
-Plantilla.personaMostrada = null
+Hokey_Hielo.personaMostrada = null
 
 //Tags que voy a usar para sustituir los campos
-Plantilla.plantillaTags = {
+Hokey_Hielo.plantillaTags = {
     "ID": "### ID ###",
     "NOMBRE": "### NOMBRE ###",
     "APELLIDOS": "### APELLIDOS ###",
@@ -133,15 +133,15 @@ Plantilla.plantillaTags = {
     " NHL": "###  NHL ###",
 }
 
-Plantilla.datosMostrados = {}
+Hokey_Hielo.datosMostrados = {}
 
 
 
 /// Plantilla para poner los datos de una persona en un tabla dentro de un formulario
-Plantilla.plantillaFormularioPersona = {}
+Hokey_Hielo.plantillaFormularioPersona = {}
 
 // Cabecera del formulario
-Plantilla.plantillaFormularioPersona.formulario = `
+Hokey_Hielo.plantillaFormularioPersona.formulario = `
 <form method='post' action=''>
     <table width="100%" class="listado-personas">
         <thead>
@@ -149,31 +149,31 @@ Plantilla.plantillaFormularioPersona.formulario = `
             <th width="15%">Año contratación</th><th width="25%">Acciones</th>
         </thead>
         <tbody>
-            <tr title="${Plantilla.plantillaTags.ID}">
+            <tr title="${Hokey_Hielo.plantillaTags.ID}">
                 <td><input type="text" class="form-persona-elemento" disabled 
-                id="form-persona-id"  value="${Plantilla.plantillaTags.ID}" 
+                id="form-persona-id"  value="${Hokey_Hielo.plantillaTags.ID}" 
                 name="id_persona"/></td>
                 <td><input type="text" class="form-persona-elemento editable" disabled
-                id="form-persona-nombre" required value="${Plantilla.plantillaTags.NOMBRE}" 
+                id="form-persona-nombre" required value="${Hokey_Hielo.plantillaTags.NOMBRE}" 
                 name="nombre_persona"/></td>
                 <td><input type="text" class="form-persona-elemento editable" disabled
-                id="form-persona-apellidos" value="${Plantilla.plantillaTags.APELLIDOS}" 
+                id="form-persona-apellidos" value="${Hokey_Hielo.plantillaTags.APELLIDOS}" 
                 name="apellidos_persona"/></td>
                 <td><input type="text" class="form-persona-elemento editable" disabled
-                id="form-persona-posicion" required value="${Plantilla.plantillaTags.Posicion}" 
+                id="form-persona-posicion" required value="${Hokey_Hielo.plantillaTags.Posicion}" 
                 name="posicion-persona"/></td>
                 <td><input type="number" class="form-persona-elemento editable" disabled
                 id="form-persona-anio" min="1950" max="2030" size="8" required
-                value="${Plantilla.plantillaTags["Año de contratacion"]}" 
+                value="${Hokey_Hielo.plantillaTags["Año de contratacion"]}" 
                 name="año_contratacion_persona"/></td>
         <td>
-                <div><a href="javascript:Plantilla.editar()" class="opcion-secundaria mostrar">Editar</a></div>
-                <div><a href="javascript:Plantilla.guardar()" class="opcion-terciaria editar ocultar">Guardar</a></div>
-                <div><a href="javascript:Plantilla.cancelar()" class="opcion-terciaria editar ocultar">Cancelar</a></div>
+                <div><a href="javascript:Hokey_Hielo.editar()" class="opcion-secundaria mostrar">Editar</a></div>
+                <div><a href="javascript:Hokey_Hielo.guardar()" class="opcion-terciaria editar ocultar">Guardar</a></div>
+                <div><a href="javascript:Hokey_Hielo.cancelar()" class="opcion-terciaria editar ocultar">Cancelar</a></div>
         </td>
         <td>
-            <div><a href="javascript:Plantilla.mostrar(Plantilla.idAnterior)" class="opcion-secundaria mostrar">Anterior</a></div>
-            <div><a href="javascript:Plantilla.mostrar(Plantilla.idSiguiente)" class="opcion-secundaria mostrar">Siguiente</a></div>
+            <div><a href="javascript:Hokey_Hielo.mostrar(Hokey_Hielo.idAnterior)" class="opcion-secundaria mostrar">Anterior</a></div>
+            <div><a href="javascript:Hokey_Hielo.mostrar(Hokey_Hielo.idSiguiente)" class="opcion-secundaria mostrar">Siguiente</a></div>
         </td>
     </tr>
 
@@ -186,12 +186,12 @@ Plantilla.plantillaFormularioPersona.formulario = `
 
 
 /// Plantilla para poner los datos de varias personas dentro de una tabla
-Plantilla.plantillaTablaPersonas = {};
+Hokey_Hielo.plantillaTablaPersonas = {};
 
 
 
 // Cabecera de la tabla
-Plantilla.plantillaTablaPersonas.cabecera = `<table width="100%" class="listado-personas">
+Hokey_Hielo.plantillaTablaPersonas.cabecera = `<table width="100%" class="listado-personas">
     <thead>
         <tr>
             <th width="10%">Id</th>
@@ -206,16 +206,16 @@ Plantilla.plantillaTablaPersonas.cabecera = `<table width="100%" class="listado-
 
 
 // Elemento TR que muestra los datos de una persona
-Plantilla.plantillaTablaPersonas.cuerpo = `
-    <tr title="${Plantilla.plantillaTags.ID}">
-        <td>${Plantilla.plantillaTags.ID}</td>
-        <td>${Plantilla.plantillaTags.NOMBRE} ${Plantilla.plantillaTags.APELLIDOS}</td>
-        <td>${Plantilla.plantillaTags["Año de contratacion"]}</td>
-        <td>${Plantilla.plantillaTags.Posicion}</td>
-        <td>${Plantilla.plantillaTags[" NHL"]}</td>
+Hokey_Hielo.plantillaTablaPersonas.cuerpo = `
+    <tr title="${Hokey_Hielo.plantillaTags.ID}">
+        <td>${Hokey_Hielo.plantillaTags.ID}</td>
+        <td>${Hokey_Hielo.plantillaTags.NOMBRE} ${Hokey_Hielo.plantillaTags.APELLIDOS}</td>
+        <td>${Hokey_Hielo.plantillaTags["Año de contratacion"]}</td>
+        <td>${Hokey_Hielo.plantillaTags.Posicion}</td>
+        <td>${Hokey_Hielo.plantillaTags[" NHL"]}</td>
         <td>
            
-            <div><a href="javascript:Plantilla.mostrar('${Plantilla.plantillaTags.ID}')" class="opcion-secundaria mostrar">Mostrar</a></div>
+            <div><a href="javascript:Hokey_Hielo.mostrar('${Hokey_Hielo.plantillaTags.ID}')" class="opcion-secundaria mostrar">Mostrar</a></div>
             
 </div>
         </td>
@@ -224,7 +224,7 @@ Plantilla.plantillaTablaPersonas.cuerpo = `
 
 
 // Pie de la tabla
-Plantilla.plantillaTablaPersonas.pie = `
+Hokey_Hielo.plantillaTablaPersonas.pie = `
     </tbody>
     </table>
 `;
@@ -233,14 +233,14 @@ Plantilla.plantillaTablaPersonas.pie = `
 
 
 
-Plantilla.sustituyeTags = function (plantilla, persona) {
+Hokey_Hielo.sustituyeTags = function (plantilla, persona) {
     return plantilla
-        .replace(new RegExp(Plantilla.plantillaTags.ID, 'g'), persona.ref['@ref'].id)
-        .replace(new RegExp(Plantilla.plantillaTags.NOMBRE, 'g'), persona.data.nombre)
-        .replace(new RegExp(Plantilla.plantillaTags.APELLIDOS, 'g'), persona.data.apellidos)
-        .replace(new RegExp(Plantilla.plantillaTags["Año de contratacion"], 'g'), persona.data.fecha.anio)
-        .replace(new RegExp(Plantilla.plantillaTags.Posicion, 'g'), persona.data.posicion)
-        .replace(new RegExp(Plantilla.plantillaTags[" NHL"], 'g'), persona.data.anios_jugados_NHL)
+        .replace(new RegExp(Hokey_Hielo.plantillaTags.ID, 'g'), persona.ref['@ref'].id)
+        .replace(new RegExp(Hokey_Hielo.plantillaTags.NOMBRE, 'g'), persona.data.nombre)
+        .replace(new RegExp(Hokey_Hielo.plantillaTags.APELLIDOS, 'g'), persona.data.apellidos)
+        .replace(new RegExp(Hokey_Hielo.plantillaTags["Año de contratacion"], 'g'), persona.data.fecha.anio)
+        .replace(new RegExp(Hokey_Hielo.plantillaTags.Posicion, 'g'), persona.data.posicion)
+        .replace(new RegExp(Hokey_Hielo.plantillaTags[" NHL"], 'g'), persona.data.anios_jugados_NHL)
 }
 
 
@@ -250,8 +250,8 @@ Plantilla.sustituyeTags = function (plantilla, persona) {
  * @param {Persona} Persona Objeto con los datos de la persona que queremos escribir en el TR
  * @returns La plantilla del cuerpo de la tabla con los datos actualizados
  */
-Plantilla.plantillaTablaPersonas.actualiza = function (persona) {
-    return Plantilla.sustituyeTags(this.cuerpo, persona)
+Hokey_Hielo.plantillaTablaPersonas.actualiza = function (persona) {
+    return Hokey_Hielo.sustituyeTags(this.cuerpo, persona)
 }
 
 /**
@@ -259,8 +259,8 @@ Plantilla.plantillaTablaPersonas.actualiza = function (persona) {
  * @param {Persona} Persona Objeto con los datos de la persona que queremos escribir en el TR
  * @returns La plantilla del cuerpo de la tabla con los datos actualizados
  */
-Plantilla.plantillaFormularioPersona.actualiza = function (persona) {
-    return Plantilla.sustituyeTags(this.formulario, persona)
+Hokey_Hielo.plantillaFormularioPersona.actualiza = function (persona) {
+    return Hokey_Hielo.sustituyeTags(this.formulario, persona)
 }
 
 /**
@@ -268,12 +268,12 @@ Plantilla.plantillaFormularioPersona.actualiza = function (persona) {
  * @param {función} callBackFn Función a la que se llamará una vez recibidos los datos.
  */
 
-Plantilla.recupera = async function (callBackFn) {
+Hokey_Hielo.recupera = async function (callBackFn) {
     let response = null
 
     // Intento conectar con el microservicio personas
     try {
-        const url = Frontend.API_GATEWAY + "/plantilla/getTodas"
+        const url = Frontend.API_GATEWAY + "/hokey/getTodas"
         console.log("URL", url)
         response = await fetch(url)
 
@@ -287,7 +287,7 @@ Plantilla.recupera = async function (callBackFn) {
     let vectorPersonas = null
     if (response) {
         vectorPersonas = await response.json()
-        Plantilla.datosMostrados= vectorPersonas.data
+        Hokey_Hielo.datosMostrados= vectorPersonas.data
         //console.log("DatosMostrados",Plantilla.datosMostrados)
         callBackFn(vectorPersonas.data)
     }
@@ -299,10 +299,10 @@ Plantilla.recupera = async function (callBackFn) {
  * @param {String} idPersona Identificador de la persona a mostrar
  * @param {función} callBackFn Función a la que se llamará una vez recibidos los datos.
  */
-Plantilla.recuperaUnaPersona = async function (idPersona, callBackFn) {
+Hokey_Hielo.recuperaUnaPersona = async function (idPersona, callBackFn) {
     try {
 
-        const url = Frontend.API_GATEWAY + "/plantilla/getPorId/" + idPersona
+        const url = Frontend.API_GATEWAY + "/hokey/getPorId/" + idPersona
         const response = await fetch(url);
         if (response) {
             const persona = await response.json()
@@ -320,10 +320,10 @@ Plantilla.recuperaUnaPersona = async function (idPersona, callBackFn) {
  * @param {persona} Persona Objeto con los datos de la persona
  * @returns Una cadena con la tabla que tiene ya los datos actualizados
  */
-Plantilla.personaComoTabla = function (persona) {
-    return Plantilla.plantillaTablaPersonas.cabecera
-        + Plantilla.plantillaTablaPersonas.actualiza(persona)
-        + Plantilla.plantillaTablaPersonas.pie;
+Hokey_Hielo.personaComoTabla = function (persona) {
+    return Hokey_Hielo.plantillaTablaPersonas.cabecera
+        + Hokey_Hielo.plantillaTablaPersonas.actualiza(persona)
+        + Hokey_Hielo.plantillaTablaPersonas.pie;
 }
 
 
@@ -332,8 +332,8 @@ Plantilla.personaComoTabla = function (persona) {
  * @param {persona} Persona Objeto con los datos de la persona
  * @returns Una cadena con la tabla que tiene ya los datos actualizados
  */
-Plantilla.personaComoFormulario = function (persona) {
-    return Plantilla.plantillaFormularioPersona.actualiza( persona );
+Hokey_Hielo.personaComoFormulario = function (persona) {
+    return Hokey_Hielo.plantillaFormularioPersona.actualiza( persona );
 }
 
 
@@ -342,14 +342,14 @@ Plantilla.personaComoFormulario = function (persona) {
  * @param {Vector_de_personas} vector Vector con los datos de las personas a mostrar
  */
 
-Plantilla.imprimeMuchasPersonas = function (vector) {
+Hokey_Hielo.imprimeMuchasPersonas = function (vector) {
      console.log("expect Imprime muchas personas",vector) // Para comprobar lo que hay en vector
 
     // Compongo el contenido que se va a mostrar dentro de la tabla
-    let msj = Plantilla.plantillaTablaPersonas.cabecera
-        vector.forEach(e => msj += Plantilla.plantillaTablaPersonas.actualiza(e))
+    let msj = Hokey_Hielo.plantillaTablaPersonas.cabecera
+        vector.forEach(e => msj += Hokey_Hielo.plantillaTablaPersonas.actualiza(e))
 
-    msj += Plantilla.plantillaTablaPersonas.pie
+    msj += Hokey_Hielo.plantillaTablaPersonas.pie
 
     // Borro toda la info de Article y la sustituyo por la que me interesa
 
@@ -363,23 +363,23 @@ Plantilla.imprimeMuchasPersonas = function (vector) {
  * @param {Persona} persona Datos de la persona a mostrar
  */
 
-Plantilla.imprimeUnaPersona = function (persona) {
+Hokey_Hielo.imprimeUnaPersona = function (persona) {
     console.log("expect" ,persona)
     // Llamo a las funciones obtenerIdAnterior y obtenerIdSiguiente para actualizar las variables de ID
-    Plantilla.obtenerIdAnterior(persona)
-    Plantilla.obtenerIdSiguiente(persona)
+    Hokey_Hielo.obtenerIdAnterior(persona)
+    Hokey_Hielo.obtenerIdSiguiente(persona)
 
     // console.log(persona) // Para comprobar lo que hay en vector
-    let msj = Plantilla.personaComoTabla(persona);
+    let msj = Hokey_Hielo.personaComoTabla(persona);
 
     // Borro toda la info de Article y la sustituyo por la que me interesa
     Frontend.Article.actualizar("Mostrar una persona", msj)
 
     // Actualiza el objeto que guarda los datos mostrados
-    Plantilla.almacenaDatos(persona)
+    Hokey_Hielo.almacenaDatos(persona)
 
     // Actualiza la información mostrada en la plantilla
-    msj = Plantilla.personaComoFormulario(persona);
+    msj = Hokey_Hielo.personaComoFormulario(persona);
     Frontend.Article.actualizar("Mostrar una persona", msj);
 
 
@@ -387,32 +387,32 @@ Plantilla.imprimeUnaPersona = function (persona) {
 }
 
 
-Plantilla.obtenerIdAnterior =  function (idActual) {
+Hokey_Hielo.obtenerIdAnterior =  function (idActual) {
     let idAnterior
-    for(let i=0; i<Plantilla.datosMostrados.length; i++){
-        if(Plantilla.datosMostrados[i].ref['@ref'].id === idActual.ref['@ref'].id){
+    for(let i=0; i<Hokey_Hielo.datosMostrados.length; i++){
+        if(Hokey_Hielo.datosMostrados[i].ref['@ref'].id === idActual.ref['@ref'].id){
             if(i === 0){
-                idAnterior = Plantilla.datosMostrados[Plantilla.datosMostrados.length-1]
+                idAnterior = Hokey_Hielo.datosMostrados[Hokey_Hielo.datosMostrados.length-1]
             }else{
-                idAnterior = Plantilla.datosMostrados[i-1]
+                idAnterior = Hokey_Hielo.datosMostrados[i-1]
             }
         }
     }
     // Actualizo la variable que almacena el ID anterior
     console.log("anterior",idAnterior)
-    Plantilla.idAnterior=idAnterior.ref['@ref'].id;
+    Hokey_Hielo.idAnterior=idAnterior.ref['@ref'].id;
 
 
 }
 
-Plantilla.obtenerIdSiguiente = function (idActual) {
+Hokey_Hielo.obtenerIdSiguiente = function (idActual) {
     let idSiguiente
-    for(let i=0; i<Plantilla.datosMostrados.length; i++){
-        if(Plantilla.datosMostrados[i].ref['@ref'].id === idActual.ref['@ref'].id){
-            if(i === Plantilla.datosMostrados.length-1){
-                idSiguiente = Plantilla.datosMostrados[0]
+    for(let i=0; i<Hokey_Hielo.datosMostrados.length; i++){
+        if(Hokey_Hielo.datosMostrados[i].ref['@ref'].id === idActual.ref['@ref'].id){
+            if(i === Hokey_Hielo.datosMostrados.length-1){
+                idSiguiente = Hokey_Hielo.datosMostrados[0]
             }else{
-                idSiguiente = Plantilla.datosMostrados[i+1]
+                idSiguiente = Hokey_Hielo.datosMostrados[i+1]
             }
         }
     }
@@ -420,7 +420,7 @@ Plantilla.obtenerIdSiguiente = function (idActual) {
 
     // Actualizo la variable que almacena el ID anterior
     console.log("siguiente",idSiguiente)
-    Plantilla.idSiguiente=idSiguiente.ref['@ref'].id;
+    Hokey_Hielo.idSiguiente=idSiguiente.ref['@ref'].id;
 
 
 
@@ -433,8 +433,8 @@ Plantilla.obtenerIdSiguiente = function (idActual) {
  * @param {Persona} persona Datos de la persona a almacenar
  */
 
-Plantilla.almacenaDatos = function (persona) {
-    Plantilla.personaMostrada = persona;
+Hokey_Hielo.almacenaDatos = function (persona) {
+    Hokey_Hielo.personaMostrada = persona;
 }
 
 /**
@@ -442,15 +442,15 @@ Plantilla.almacenaDatos = function (persona) {
  * @return Datos de la persona a almacenada
  */
 
-Plantilla.recuperaDatosAlmacenados = function () {
+Hokey_Hielo.recuperaDatosAlmacenados = function () {
     return this.personaMostrada;
 }
 
 /**
  * Función principal para recuperar las personas desde el MS y, posteriormente, imprimirlas.
  */
-Plantilla.listar = function () {
-    Plantilla.recupera(Plantilla.imprimeMuchasPersonas);
+Hokey_Hielo.listar = function () {
+    Hokey_Hielo.recupera(Hokey_Hielo.imprimeMuchasPersonas);
 }
 
 
@@ -458,7 +458,7 @@ Plantilla.listar = function () {
  * Función principal para mostrar los datos de una persona desde el MS y, posteriormente, imprimirla.
  * @param {String} idPersona Identificador de la persona a mostrar
  */
-Plantilla.mostrar = function (idPersona) {
+Hokey_Hielo.mostrar = function (idPersona) {
     console.log('Mostrar: ', idPersona)
     this.recuperaUnaPersona(idPersona, this.imprimeUnaPersona);
 }
@@ -472,10 +472,10 @@ Plantilla.mostrar = function (idPersona) {
  * @param {boolean} Deshabilitando Indica si queremos deshabilitar o habilitar los campos
  * @returns El propio objeto Personas, para concatenar llamadas
  */
-Plantilla.habilitarDeshabilitarCamposEditables = function (deshabilitando) {
+Hokey_Hielo.habilitarDeshabilitarCamposEditables = function (deshabilitando) {
     deshabilitando = (typeof deshabilitando === "undefined" || deshabilitando === null) ? true : deshabilitando
-    for (let campo in Plantilla.form) {
-        document.getElementById(Plantilla.form[campo]).disabled = deshabilitando
+    for (let campo in Hokey_Hielo.form) {
+        document.getElementById(Hokey_Hielo.form[campo]).disabled = deshabilitando
     }
     return this
 }
@@ -485,8 +485,8 @@ Plantilla.habilitarDeshabilitarCamposEditables = function (deshabilitando) {
  * Establece disable = true en los campos editables
  * @returns El propio objeto Personas, para concatenar llamadas
  */
-Plantilla.deshabilitarCamposEditables = function () {
-    Plantilla.habilitarDeshabilitarCamposEditables(true)
+Hokey_Hielo.deshabilitarCamposEditables = function () {
+    Hokey_Hielo.habilitarDeshabilitarCamposEditables(true)
     return this
 }
 
@@ -495,8 +495,8 @@ Plantilla.deshabilitarCamposEditables = function () {
  * Establece disable = false en los campos editables
  * @returns El propio objeto Personas, para concatenar llamadas
  */
-Plantilla.habilitarCamposEditables = function () {
-    Plantilla.habilitarDeshabilitarCamposEditables(false)
+Hokey_Hielo.habilitarCamposEditables = function () {
+    Hokey_Hielo.habilitarDeshabilitarCamposEditables(false)
     return this
 }
 
@@ -505,7 +505,7 @@ Plantilla.habilitarCamposEditables = function () {
  * ????Muestra las opciones que tiene el usuario cuando selecciona Editar
  * @returns El propio objeto Personas, para concatenar llamadas
  */
-Plantilla.opcionesMostrarOcultar = function (classname, mostrando) {
+Hokey_Hielo.opcionesMostrarOcultar = function (classname, mostrando) {
     let opciones = document.getElementsByClassName(classname)
     let claseQuitar = mostrando ? Frontend.CLASS_OCULTAR : Frontend.CLASS_MOSTRAR
     let claseAniadir = !mostrando ? Frontend.CLASS_OCULTAR : Frontend.CLASS_MOSTRAR
@@ -521,7 +521,7 @@ Plantilla.opcionesMostrarOcultar = function (classname, mostrando) {
  * Oculta todas las opciones secundarias
  * @returns El propio objeto para encadenar llamadas
  */
-Plantilla.ocultarOpcionesSecundarias = function () {
+Hokey_Hielo.ocultarOpcionesSecundarias = function () {
     this.opcionesMostrarOcultar("opcion-secundaria", false)
     return this
 }
@@ -531,7 +531,7 @@ Plantilla.ocultarOpcionesSecundarias = function () {
  * Muestra todas las opciones secundarias
  * @returns El propio objeto para encadenar llamadas
  */
-Plantilla.mostrarOpcionesSecundarias = function () {
+Hokey_Hielo.mostrarOpcionesSecundarias = function () {
     this.opcionesMostrarOcultar("opcion-secundaria", true)
     return this
 }
@@ -541,7 +541,7 @@ Plantilla.mostrarOpcionesSecundarias = function () {
  * Muestra las opciones que tiene el usuario cuando selecciona Editar
  * @returns El propio objeto Personas, para concatenar llamadas
  */
-Plantilla.mostrarOcionesTerciariasEditar = function () {
+Hokey_Hielo.mostrarOcionesTerciariasEditar = function () {
     this.opcionesMostrarOcultar("opcion-terciaria editar", true)
     return this
 }
@@ -551,7 +551,7 @@ Plantilla.mostrarOcionesTerciariasEditar = function () {
  * Oculta las opciones que tiene el usuario cuando selecciona Editar
  * @returns El propio objeto Personas, para concatenar llamadas
  */
-Plantilla.ocultarOcionesTerciariasEditar = function () {
+Hokey_Hielo.ocultarOcionesTerciariasEditar = function () {
     this.opcionesMostrarOcultar("opcion-terciaria editar", false)
     return this
 }
@@ -560,7 +560,7 @@ Plantilla.ocultarOcionesTerciariasEditar = function () {
 /**
  * Función que permite modificar los datos de una persona
  */
-Plantilla.editar = function () {
+Hokey_Hielo.editar = function () {
     this.ocultarOpcionesSecundarias()
     this.mostrarOcionesTerciariasEditar()
     this.habilitarCamposEditables()
@@ -569,7 +569,7 @@ Plantilla.editar = function () {
 /**
  * Función que permite cancelar la acción sobre los datos de una persona
  */
-Plantilla.cancelar = function () {
+Hokey_Hielo.cancelar = function () {
     this.imprimeUnaPersona(this.recuperaDatosAlmacenados())
     this.deshabilitarCamposEditables()
     this.ocultarOcionesTerciariasEditar()
@@ -581,9 +581,9 @@ Plantilla.cancelar = function () {
 /**
  * Función para guardar los nuevos datos de una persona
  */
-Plantilla.guardar = async function () {
+Hokey_Hielo.guardar = async function () {
     try {
-        let url = Frontend.API_GATEWAY + "/plantilla/setTodo/"
+        let url = Frontend.API_GATEWAY + "/hokey/setTodo/"
         let id_persona = document.getElementById("form-persona-id").value
         const response = await fetch(url, {
             method: 'POST', // *GET, POST, PUT, DELETE, etc.
@@ -615,7 +615,7 @@ Plantilla.guardar = async function () {
 
          */
 
-        Plantilla.mostrar(id_persona)
+        Hokey_Hielo.mostrar(id_persona)
     } catch (error) {
         alert("Error,Plantilla.guardar: No se han podido acceder al API Gateway " + error)
         //console.error(error)

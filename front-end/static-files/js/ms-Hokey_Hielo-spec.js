@@ -83,34 +83,34 @@ describe("Plantilla.mostrarHome: ", function () {
 
     it("muestra datos nulos cuando le pasamos un valor nulo",
         function () {
-            Plantilla.mostrarHome()
+            Hokey_Hielo.mostrarHome()
             expect(elementoTitulo.innerHTML).toBe(TITULO_HOME)
-            expect(elementoContenido.innerHTML).toBe(Plantilla.datosDescargadosNulos.mensaje)
+            expect(elementoContenido.innerHTML).toBe(Hokey_Hielo.datosDescargadosNulos.mensaje)
         })
 
     it("muestra datos nulos cuando le pasamos un valor que no es un objeto",
         function () {
-            Plantilla.mostrarHome(23)
+            Hokey_Hielo.mostrarHome(23)
             expect(elementoTitulo.innerHTML).toBe(TITULO_HOME)
-            expect(elementoContenido.innerHTML).toBe(Plantilla.datosDescargadosNulos.mensaje)
+            expect(elementoContenido.innerHTML).toBe(Hokey_Hielo.datosDescargadosNulos.mensaje)
         })
 
     it("muestra datos nulos cuando le pasamos un objeto que no tiene campo mensaje",
         function () {
             // Objeto vacío
-            Plantilla.mostrarHome({})
+            Hokey_Hielo.mostrarHome({})
             expect(elementoTitulo.innerHTML).toBe(TITULO_HOME)
-            expect(elementoContenido.innerHTML).toBe(Plantilla.datosDescargadosNulos.mensaje)
+            expect(elementoContenido.innerHTML).toBe(Hokey_Hielo.datosDescargadosNulos.mensaje)
 
             // Objeto sin campo mensaje
-            Plantilla.mostrarHome({ foo: "bar" })
+            Hokey_Hielo.mostrarHome({ foo: "bar" })
             expect(elementoTitulo.innerHTML).toBe(TITULO_HOME)
-            expect(elementoContenido.innerHTML).toBe(Plantilla.datosDescargadosNulos.mensaje)
+            expect(elementoContenido.innerHTML).toBe(Hokey_Hielo.datosDescargadosNulos.mensaje)
         })
 
     it("muestra correctamente el título y el mensaje",
         function () {
-            Plantilla.mostrarHome(datosDescargadosPrueba)
+            Hokey_Hielo.mostrarHome(datosDescargadosPrueba)
             expect(elementoTitulo.innerHTML).toBe(TITULO_HOME)
             expect(elementoContenido.innerHTML).toBe(datosDescargadosPrueba.mensaje)
         })
@@ -120,45 +120,45 @@ describe("Plantilla.mostrarHome: ", function () {
 describe("Plantilla.mostrarAcercaDe: ", function () {
     it("muestra datos nulos cuando le pasamos un valor nulo",
         function () {
-            Plantilla.mostrarAcercaDe()
+            Hokey_Hielo.mostrarAcercaDe()
             expect(elementoTitulo.innerHTML).toBe(TITULO_ACERCA_DE)
-            expect(elementoContenido.innerHTML.search(Plantilla.datosDescargadosNulos.mensaje) >= 0).toBeTrue()
+            expect(elementoContenido.innerHTML.search(Hokey_Hielo.datosDescargadosNulos.mensaje) >= 0).toBeTrue()
         })
 
     it("muestra datos nulos cuando le pasamos un valor que no es un objeto",
         function () {
-            Plantilla.mostrarAcercaDe(23)
+            Hokey_Hielo.mostrarAcercaDe(23)
             expect(elementoTitulo.innerHTML).toBe(TITULO_ACERCA_DE)
-            expect(elementoContenido.innerHTML.search(Plantilla.datosDescargadosNulos.mensaje) >= 0).toBeTrue()
+            expect(elementoContenido.innerHTML.search(Hokey_Hielo.datosDescargadosNulos.mensaje) >= 0).toBeTrue()
         })
 
     it("muestra datos nulos cuando le pasamos un objeto que no tiene campo mensaje o autor o email o fecha ",
         function () {
             // Objeto vacío
-            Plantilla.mostrarAcercaDe({})
+            Hokey_Hielo.mostrarAcercaDe({})
             expect(elementoTitulo.innerHTML).toBe(TITULO_ACERCA_DE)
-            expect(elementoContenido.innerHTML.search(Plantilla.datosDescargadosNulos.mensaje) >= 0).toBeTrue()
+            expect(elementoContenido.innerHTML.search(Hokey_Hielo.datosDescargadosNulos.mensaje) >= 0).toBeTrue()
 
             // Objeto sin campo mensaje
-            Plantilla.mostrarAcercaDe({ autor: "un autor", email: "un email", fecha: "una fecha" })
+            Hokey_Hielo.mostrarAcercaDe({ autor: "un autor", email: "un email", fecha: "una fecha" })
             expect(elementoTitulo.innerHTML).toBe(TITULO_ACERCA_DE)
-            expect(elementoContenido.innerHTML.search(Plantilla.datosDescargadosNulos.mensaje) >= 0).toBeTrue()
+            expect(elementoContenido.innerHTML.search(Hokey_Hielo.datosDescargadosNulos.mensaje) >= 0).toBeTrue()
             // Objeto sin campo autor
-            Plantilla.mostrarAcercaDe({ mensaje: "un mensaje", email: "un email", fecha: "una fecha" })
+            Hokey_Hielo.mostrarAcercaDe({ mensaje: "un mensaje", email: "un email", fecha: "una fecha" })
             expect(elementoTitulo.innerHTML).toBe(TITULO_ACERCA_DE)
-            expect(elementoContenido.innerHTML.search(Plantilla.datosDescargadosNulos.mensaje) >= 0).toBeTrue()
+            expect(elementoContenido.innerHTML.search(Hokey_Hielo.datosDescargadosNulos.mensaje) >= 0).toBeTrue()
             // Objeto sin campo email
-            Plantilla.mostrarAcercaDe({ mensaje: "un mensaje", autor: "un autor", fecha: "una fecha" })
+            Hokey_Hielo.mostrarAcercaDe({ mensaje: "un mensaje", autor: "un autor", fecha: "una fecha" })
             expect(elementoTitulo.innerHTML).toBe(TITULO_ACERCA_DE)
-            expect(elementoContenido.innerHTML.search(Plantilla.datosDescargadosNulos.mensaje) >= 0).toBeTrue()
+            expect(elementoContenido.innerHTML.search(Hokey_Hielo.datosDescargadosNulos.mensaje) >= 0).toBeTrue()
             // Objeto sin campo fecha
-            Plantilla.mostrarAcercaDe({ mensaje: "un mensaje", autor: "un autor", email: "un email" })
+            Hokey_Hielo.mostrarAcercaDe({ mensaje: "un mensaje", autor: "un autor", email: "un email" })
             expect(elementoTitulo.innerHTML).toBe(TITULO_ACERCA_DE)
-            expect(elementoContenido.innerHTML.search(Plantilla.datosDescargadosNulos.mensaje) >= 0).toBeTrue()
+            expect(elementoContenido.innerHTML.search(Hokey_Hielo.datosDescargadosNulos.mensaje) >= 0).toBeTrue()
         })
     it("muestra correctamente el título y el mensaje conteniendo el autor, el email y la fecha",
         function () {
-            Plantilla.mostrarAcercaDe(datosDescargadosPrueba)
+            Hokey_Hielo.mostrarAcercaDe(datosDescargadosPrueba)
             expect(elementoTitulo.innerHTML).toBe(TITULO_ACERCA_DE)
 
             // Comprobamos que al buscar el autor, el email y la fecha de prueba los encuentra dentro del contenido del article
@@ -219,7 +219,7 @@ describe('Plantilla.imprimeMuchasPersonas', function() {
         spyOn(Frontend.Article, 'actualizar');
 
         // Llamada a la función
-        Plantilla.imprimeMuchasPersonas(vector);
+        Hokey_Hielo.imprimeMuchasPersonas(vector);
 
         // Expect
         expect(Frontend.Article.actualizar).toHaveBeenCalledWith('Listado de personas', jasmine.any(String));
@@ -234,19 +234,19 @@ describe("obtenerIdAnterior", function() {
 
 
     beforeEach(function() {
-        Plantilla.datosMostrados = prueba.datos_personales;
+        Hokey_Hielo.datosMostrados = prueba.datos_personales;
     });
 
     it("devuelve el id anterior correctamente cuando hay elementos en el array", function() {
-        let idActual = Plantilla.datosMostrados[1];
-        Plantilla.obtenerIdAnterior(idActual);
-        expect(Plantilla.idAnterior).toEqual("362608688750395597");
+        let idActual = Hokey_Hielo.datosMostrados[1];
+        Hokey_Hielo.obtenerIdAnterior(idActual);
+        expect(Hokey_Hielo.idAnterior).toEqual("362608688750395597");
     });
 
     it("devuelve el último id cuando el idActual es el primero del array", function() {
-        let idActual = Plantilla.datosMostrados[0];
-        Plantilla.obtenerIdAnterior(idActual);
-        expect(Plantilla.idAnterior).toEqual("362608960790855885");
+        let idActual = Hokey_Hielo.datosMostrados[0];
+        Hokey_Hielo.obtenerIdAnterior(idActual);
+        expect(Hokey_Hielo.idAnterior).toEqual("362608960790855885");
     });
 
 
@@ -256,19 +256,19 @@ describe("obtenerIdAnterior", function() {
 
 describe("obtenerIdSiguiente", function() {
     beforeEach(function() {
-        Plantilla.datosMostrados = prueba.datos_personales;
+        Hokey_Hielo.datosMostrados = prueba.datos_personales;
     });
 
     it("devuelve el id siguiente correctamente cuando hay elementos en el array", function() {
-        let idActual = Plantilla.datosMostrados[0];
-        Plantilla.obtenerIdSiguiente(idActual);
-        expect(Plantilla.idSiguiente).toEqual("362608960790855885");
+        let idActual = Hokey_Hielo.datosMostrados[0];
+        Hokey_Hielo.obtenerIdSiguiente(idActual);
+        expect(Hokey_Hielo.idSiguiente).toEqual("362608960790855885");
     });
 
     it("devuelve el primer id cuando el idActual es el último del array", function() {
-        let idActual = Plantilla.datosMostrados[1];
-        Plantilla.obtenerIdSiguiente(idActual);
-        expect(Plantilla.idSiguiente).toEqual("362608688750395597");
+        let idActual = Hokey_Hielo.datosMostrados[1];
+        Hokey_Hielo.obtenerIdSiguiente(idActual);
+        expect(Hokey_Hielo.idSiguiente).toEqual("362608688750395597");
     });
 
 });
@@ -276,8 +276,8 @@ describe("obtenerIdSiguiente", function() {
 describe("almacenaDatos", function() {
     it("asigna la persona correctamente", function() {
         let persona = prueba.datos_personales[0];
-        Plantilla.almacenaDatos(persona);
-        expect(Plantilla.personaMostrada).toEqual(persona);
+        Hokey_Hielo.almacenaDatos(persona);
+        expect(Hokey_Hielo.personaMostrada).toEqual(persona);
     });
 });
 
@@ -288,8 +288,8 @@ describe("almacenaDatos", function() {
 describe("recuperaDatosAlmacenados", function() {
     it("devuelve el valor almacenado en personaMostrada", function() {
 
-        Plantilla.personaMostrada = prueba.datos_personales[0];
-        expect(Plantilla.recuperaDatosAlmacenados()).toEqual(prueba.datos_personales[0]);
+        Hokey_Hielo.personaMostrada = prueba.datos_personales[0];
+        expect(Hokey_Hielo.recuperaDatosAlmacenados()).toEqual(prueba.datos_personales[0]);
     });
 });
 
@@ -318,7 +318,7 @@ describe("Plantilla.sustituyeTags", function() {
         var resultadoEsperado = "ID: 1234567890, Nombre: Juan, Apellidos: Pérez, Año de contratación: undefined, Posición: Delantero, Años jugados en NHL: 2018,2019,2020";
 
         // Act
-        var resultadoObtenido = Plantilla.sustituyeTags(plantilla, persona);
+        var resultadoObtenido = Hokey_Hielo.sustituyeTags(plantilla, persona);
 
         // Assert
         expect(resultadoEsperado).toEqual(resultadoEsperado);
