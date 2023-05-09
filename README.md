@@ -5,7 +5,7 @@
 
 ## Participantes
 
-* Juan LLavero Company (jlc00052@red.ujaen.es)
+* Juan Llavero Company (jlc00052@red.ujaen.es)
 * Eduardo Lomas Recena (@red.ujaen.es)
 * Pedro Tomas Castillo (@red.ujaen.es)
 * Jose David Martínez Romero (@red.ujaen.es)
