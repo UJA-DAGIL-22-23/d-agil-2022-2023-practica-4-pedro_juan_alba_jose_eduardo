@@ -26,6 +26,16 @@ const ROUTES = [
                 [`^/alpinismo`]: '',
             },
         }
+    },
+    {
+        url: '/kayak',
+        proxy: {
+            target: "http://localhost:8005",
+            changeOrigin: true,
+            pathRewrite: {
+                [`^/kayak`]: '',
+            },
+        }
     }
 ]
 
