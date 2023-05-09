@@ -26,6 +26,16 @@ const ROUTES = [
                 [`^/alpinismo`]: '',
             },
         }
+    },
+    {
+        url: '/snowboard',
+        proxy: {
+            target: "http://localhost:8004",
+            changeOrigin: true,
+            pathRewrite: {
+                [`^/snowboard`]: '',
+            },
+        }
     }
 ]
 
