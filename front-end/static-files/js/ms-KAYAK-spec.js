@@ -34,86 +34,86 @@ function esperar(ms) {
 
 // SPECS a probar
 
-describe("Plantilla.mostrarHome: ", function () {
+describe("Kayak.mostrarHome: ", function () {
 
     it("muestra datos nulos cuando le pasamos un valor nulo",
         function () {
-            Plantilla.mostrarHome()
+            Kayak.mostrarHome()
             expect(elementoTitulo.innerHTML).toBe(TITULO_HOME)
-            expect(elementoContenido.innerHTML).toBe(Plantilla.datosDescargadosNulos.mensaje)
+            expect(elementoContenido.innerHTML).toBe(Kayak.datosDescargadosNulos.mensaje)
         })
 
     it("muestra datos nulos cuando le pasamos un valor que no es un objeto",
         function () {
-            Plantilla.mostrarHome(23)
+            Kayak.mostrarHome(23)
             expect(elementoTitulo.innerHTML).toBe(TITULO_HOME)
-            expect(elementoContenido.innerHTML).toBe(Plantilla.datosDescargadosNulos.mensaje)
+            expect(elementoContenido.innerHTML).toBe(Kayak.datosDescargadosNulos.mensaje)
         })
 
     it("muestra datos nulos cuando le pasamos un objeto que no tiene campo mensaje",
         function () {
             // Objeto vacío
-            Plantilla.mostrarHome({})
+            Kayak.mostrarHome({})
             expect(elementoTitulo.innerHTML).toBe(TITULO_HOME)
-            expect(elementoContenido.innerHTML).toBe(Plantilla.datosDescargadosNulos.mensaje)
+            expect(elementoContenido.innerHTML).toBe(Kayak.datosDescargadosNulos.mensaje)
 
             // Objeto sin campo mensaje
-            Plantilla.mostrarHome({ foo: "bar" })
+            Kayak.mostrarHome({ foo: "bar" })
             expect(elementoTitulo.innerHTML).toBe(TITULO_HOME)
-            expect(elementoContenido.innerHTML).toBe(Plantilla.datosDescargadosNulos.mensaje)
+            expect(elementoContenido.innerHTML).toBe(Kayak.datosDescargadosNulos.mensaje)
         })
 
     it("muestra correctamente el título y el mensaje",
         function () {
-            Plantilla.mostrarHome(datosDescargadosPrueba)
+            Kayak.mostrarHome(datosDescargadosPrueba)
             expect(elementoTitulo.innerHTML).toBe(TITULO_HOME)
             expect(elementoContenido.innerHTML).toBe(datosDescargadosPrueba.mensaje)
         })
 })
 
 
-describe("Plantilla.mostrarAcercaDe: ", function () {
+describe("Kayak.mostrarAcercaDe: ", function () {
     it("muestra datos nulos cuando le pasamos un valor nulo",
         function () {
-            Plantilla.mostrarAcercaDe()
+            Kayak.mostrarAcercaDe()
             expect(elementoTitulo.innerHTML).toBe(TITULO_ACERCA_DE)
-            expect(elementoContenido.innerHTML.search(Plantilla.datosDescargadosNulos.mensaje) >= 0).toBeTrue()
+            expect(elementoContenido.innerHTML.search(Kayak.datosDescargadosNulos.mensaje) >= 0).toBeTrue()
         })
 
     it("muestra datos nulos cuando le pasamos un valor que no es un objeto",
         function () {
-            Plantilla.mostrarAcercaDe(23)
+            Kayak.mostrarAcercaDe(23)
             expect(elementoTitulo.innerHTML).toBe(TITULO_ACERCA_DE)
-            expect(elementoContenido.innerHTML.search(Plantilla.datosDescargadosNulos.mensaje) >= 0).toBeTrue()
+            expect(elementoContenido.innerHTML.search(Kayak.datosDescargadosNulos.mensaje) >= 0).toBeTrue()
         })
 
     it("muestra datos nulos cuando le pasamos un objeto que no tiene campo mensaje o autor o email o fecha ",
         function () {
             // Objeto vacío
-            Plantilla.mostrarAcercaDe({})
+            Kayak.mostrarAcercaDe({})
             expect(elementoTitulo.innerHTML).toBe(TITULO_ACERCA_DE)
-            expect(elementoContenido.innerHTML.search(Plantilla.datosDescargadosNulos.mensaje) >= 0).toBeTrue()
+            expect(elementoContenido.innerHTML.search(Kayak.datosDescargadosNulos.mensaje) >= 0).toBeTrue()
 
             // Objeto sin campo mensaje
-            Plantilla.mostrarAcercaDe({ autor: "un autor", email: "un email", fecha: "una fecha" })
+            Kayak.mostrarAcercaDe({ autor: "un autor", email: "un email", fecha: "una fecha" })
             expect(elementoTitulo.innerHTML).toBe(TITULO_ACERCA_DE)
-            expect(elementoContenido.innerHTML.search(Plantilla.datosDescargadosNulos.mensaje) >= 0).toBeTrue()
+            expect(elementoContenido.innerHTML.search(Kayak.datosDescargadosNulos.mensaje) >= 0).toBeTrue()
             // Objeto sin campo autor
-            Plantilla.mostrarAcercaDe({ mensaje: "un mensaje", email: "un email", fecha: "una fecha" })
+            Kayak.mostrarAcercaDe({ mensaje: "un mensaje", email: "un email", fecha: "una fecha" })
             expect(elementoTitulo.innerHTML).toBe(TITULO_ACERCA_DE)
-            expect(elementoContenido.innerHTML.search(Plantilla.datosDescargadosNulos.mensaje) >= 0).toBeTrue()
+            expect(elementoContenido.innerHTML.search(Kayak.datosDescargadosNulos.mensaje) >= 0).toBeTrue()
             // Objeto sin campo email
-            Plantilla.mostrarAcercaDe({ mensaje: "un mensaje", autor: "un autor", fecha: "una fecha" })
+            Kayak.mostrarAcercaDe({ mensaje: "un mensaje", autor: "un autor", fecha: "una fecha" })
             expect(elementoTitulo.innerHTML).toBe(TITULO_ACERCA_DE)
-            expect(elementoContenido.innerHTML.search(Plantilla.datosDescargadosNulos.mensaje) >= 0).toBeTrue()
+            expect(elementoContenido.innerHTML.search(Kayak.datosDescargadosNulos.mensaje) >= 0).toBeTrue()
             // Objeto sin campo fecha
-            Plantilla.mostrarAcercaDe({ mensaje: "un mensaje", autor: "un autor", email: "un email" })
+            Kayak.mostrarAcercaDe({ mensaje: "un mensaje", autor: "un autor", email: "un email" })
             expect(elementoTitulo.innerHTML).toBe(TITULO_ACERCA_DE)
-            expect(elementoContenido.innerHTML.search(Plantilla.datosDescargadosNulos.mensaje) >= 0).toBeTrue()
+            expect(elementoContenido.innerHTML.search(Kayak.datosDescargadosNulos.mensaje) >= 0).toBeTrue()
         })
     it("muestra correctamente el título y el mensaje conteniendo el autor, el email y la fecha",
         function () {
-            Plantilla.mostrarAcercaDe(datosDescargadosPrueba)
+            Kayak.mostrarAcercaDe(datosDescargadosPrueba)
             expect(elementoTitulo.innerHTML).toBe(TITULO_ACERCA_DE)
 
             // Comprobamos que al buscar el autor, el email y la fecha de prueba los encuentra dentro del contenido del article
