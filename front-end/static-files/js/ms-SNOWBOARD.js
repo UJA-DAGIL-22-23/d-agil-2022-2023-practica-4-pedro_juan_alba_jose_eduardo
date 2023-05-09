@@ -135,7 +135,7 @@
  
  
  // Cabecera de la tabla
- SNOWBOARD.plantillaTablaPersonas.cabecera = `<table width="100%" class="listado-SNOWBOARD">
+ SNOWBOARD.plantillaTablaPersonas.cabecera = `<table width="100%" class="listado-personas">
                  <thead>
                      <th width="10%" aria-sort="ascending"><a href="javascript:SNOWBOARD.ordenarPor('ID')">ID<span aria-hidden="true"></span></a></th>
                      <th width="10%"><a href="javascript:SNOWBOARD.ordenarPor('nombre')">Nombre<span aria-hidden="true"></span></a></th>
@@ -231,7 +231,7 @@
  // Cabecera del formulario
  SNOWBOARD.plantillaFormularioPersona.formulario = `
  <form method='post' action=''>
-     <table width="100%" class="listado-SNOWBOARD">
+     <table width="100%" class="listado-personas">
          <thead>
              <th width="10%">Id</th><th width="20%">Nombre</th><th width="20%">Apellido</th><th width="10%">Fecha de nacimiento</th>
              <th width="15%">País</th><th width="25%">Participaciones mundiales</th><th width="10%">Medallas de oro</th>
@@ -270,7 +270,7 @@
          </tbody>
      </table>
  </form>
- <table width="100%" class="listado-SNOWBOARD">
+ <table width="100%" class="listado-personas">
      <tr>
          <td></td>
          <td>
