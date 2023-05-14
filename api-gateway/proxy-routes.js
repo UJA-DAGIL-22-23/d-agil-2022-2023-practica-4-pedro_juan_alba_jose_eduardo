@@ -36,6 +36,16 @@ const ROUTES = [
                 [`^/snowboard`]: '',
             },
         }
+    },
+    {
+        url: '/todo',
+        proxy: {
+            target: "http://localhost:8006",
+            changeOrigin: true,
+            pathRewrite: {
+                [`^/todo`]: '',
+            },
+        }
     }
 ]
 
