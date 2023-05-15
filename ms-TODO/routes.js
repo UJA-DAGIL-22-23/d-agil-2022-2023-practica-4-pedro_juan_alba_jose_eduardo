@@ -24,7 +24,7 @@ router.get("/", async (req, res) => {
 
 router.get("/getTodos", async (req, res) => {
     try {
-        await callbacks.getTodos(req, res)
+        await callbacks.getTodosNombres(req, res)
     } catch (error) {
         console.log(error);
     }

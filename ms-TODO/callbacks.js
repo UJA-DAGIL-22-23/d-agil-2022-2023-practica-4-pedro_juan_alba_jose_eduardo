@@ -30,27 +30,41 @@ const CB_MODEL_SELECTS = {
 getTodosNombres: async (req, res) => {
     try {
         
-        let url_alpinismo=URL_MS_ALPINISMO+"/getTodas"
+        //let url_alpinismo=URL_MS_ALPINISMO+"/getTodas"
         let url_karate=URL_MS_KARATE+"/getTodosDeportistas"
         let url_snowboard=URL_MS_SNOWBOARD+"/getTodas"
 
-        let response_alpinismo = await fetch(url_alpinismo)
+        //let response_alpinismo = await fetch(url_alpinismo)
         let response_karate = await fetch(url_karate)
         let response_snowboard = await fetch(url_snowboard)
 
-        let alpinismo = await response_alpinismo.json()
+        //let alpinismo = await response_alpinismo.json()
         let karate = await response_karate.json()
         let snowboard = await response_snowboard.json()
+
+       
+        let arrayKarate = []
+        karate.data.forEach(e => {
+            arrayKarate.push(e.data)
+        });
+
+        let arraySnowboard = []
+        snowboard.data.forEach(e => {
+            arraySnowboard.push(e.data)
+        });
+        
+
+        let resultado = arrayKarate.concat(arraySnowboard)
+
+        console.log(resultado)
        
         CORS(res)
             .status(200)
-            .json(alpinismo)
-            .json(karate)
-            .json(snowboard)
+            .json(resultado)
     } catch (error) {
         CORS(res).status(500).json({ error: error.description+"\n ¡¡COMPRUEBE QUE LOS MS FUNCIONEN CORRECTAMENTE" })
     }
-},
+}
 }
 
 
@@ -59,7 +73,13 @@ getTodosNombres: async (req, res) => {
 * Callbacks adicionales. Fundamentalmente para comprobar que el ms funciona.
 */
 const CB_OTHERS = {
-
+    home: async (req, res) => {
+        try {
+            CORS(res).status(200).json({mensaje: "Microservicio Todo: home"});
+        } catch (error) {
+            CORS(res).status(500).json({ error: error.description })
+        }
+    },
 }
 
 // Une todos los callbacks en un solo objeto.

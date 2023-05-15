@@ -16,11 +16,6 @@ Todo.plantillaTags = {
     "NOMBRE": "### NOMBRE ###",
 }
 
-
-
-
-
-
 // Plantilla de datosDescargados vacíos
 Todo.datosDescargadosNulos = {
     mensaje: "Datos Descargados No válidos",
@@ -93,7 +88,7 @@ Todo.plantillaTablaDeportistasSoloNombres.pie = `
  */           
 Todo.sustituyeTags = function (plantilla, deportista) {
     return plantilla
-        .replace(new RegExp(Todo.plantillaTags.ID, 'g'), deportista.ref['@ref'].id)   
+        //.replace(new RegExp(Todo.plantillaTags.ID, 'g'), deportista.ref['@ref'].id)   
         .replace(new RegExp(Todo.plantillaTags.NOMBRE, 'g'), deportista.data.nombre)
 }
 
@@ -121,12 +116,9 @@ Todo.mostrarDeportistas = async function (callBackFn) {
     let vectorDeportistas = null
     if (response) {
         vectorDeportistas = await response.json()
-        callBackFn(vectorDeportistas.data)
+        callBackFn(vectorDeportistas)
     }
 }
-
-let vectorDeportistas = null
-
 
 
 Todo.imprimeNombreTodosDeportistas = function (vector) {
