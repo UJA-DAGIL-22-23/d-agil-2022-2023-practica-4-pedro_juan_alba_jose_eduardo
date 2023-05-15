@@ -62,6 +62,7 @@ Todo.plantillaTablaDeportistasSoloNombres.cabecera = `<table width="100%" class=
     <th width="50%">Nombre</th>
 </thead>
 <tbody>
+<center><div><a href="javascript:Todo.listarOrdenados()" class="opcion-secundaria mostrar">Ordenar</a></div></center>
 `;
 
 
@@ -131,10 +132,33 @@ Todo.imprimeNombreTodosDeportistas = function (vector) {
     Frontend.Article.actualizar("Listado de los nombres de deportistas de todos los deportes", msj)
 }
 
+Todo.imprimeNombreTodosDeportistasOrdenados = function (vector) {
+    vector.sort((a, b) => {
+        if (a == b) {
+          return 0;
+        }
+        if (a < b) {
+          return -1;
+        }
+        return 1;
+      });
+    // console.log(vector) // Para comprobar lo que hay en vector
+    let msj = Todo.plantillaTablaDeportistasSoloNombres.cabecera
+    // Compongo el contenido que se va a mostrar dentro de la tabla
+    vector.forEach(e => msj += Todo.plantillaTablaDeportistasSoloNombres.actualiza(e))
+    msj += Todo.plantillaTablaDeportistasSoloNombres.pie
+
+    // Borro toda la info de Article y la sustituyo por la que me interesa
+    Frontend.Article.actualizar("Listado de los nombres de deportistas de todos los deportes", msj)
+}
 
 /**
  * Función principal para recuperar los nombres de los deportistas desde el MS y, posteriormente, imprimirlas.
  */
 Todo.listarTodosNombres = function () {
     Todo.mostrarDeportistas(Todo.imprimeNombreTodosDeportistas);
+}
+
+Todo.listarOrdenados = function () {
+    Todo.mostrarDeportistas(Todo.imprimeNombreTodosDeportistasOrdenados);
 }
