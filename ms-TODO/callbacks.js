@@ -30,33 +30,38 @@ const CB_MODEL_SELECTS = {
 getTodosNombres: async (req, res) => {
     try {
         
-        //let url_alpinismo=URL_MS_ALPINISMO+"/getTodas"
+        let url_alpinismo=URL_MS_ALPINISMO+"/getTodas"
         let url_karate=URL_MS_KARATE+"/getTodosDeportistas"
         let url_snowboard=URL_MS_SNOWBOARD+"/getTodas"
 
-        //let response_alpinismo = await fetch(url_alpinismo)
+        let response_alpinismo = await fetch(url_alpinismo)
         let response_karate = await fetch(url_karate)
         let response_snowboard = await fetch(url_snowboard)
 
-        //let alpinismo = await response_alpinismo.json()
+        let alpinismo = await response_alpinismo.json()
         let karate = await response_karate.json()
         let snowboard = await response_snowboard.json()
 
        
         let arrayKarate = []
         karate.data.forEach(e => {
-            arrayKarate.push(e.data)
+            arrayKarate.push(e.data.nombre)
         });
 
         let arraySnowboard = []
         snowboard.data.forEach(e => {
-            arraySnowboard.push(e.data)
+            arraySnowboard.push(e.data.nombre)
+        });
+
+        let arrayAlpinismo = []
+        alpinismo.data.forEach(e => {
+            arrayAlpinismo.push(e.data.Nombre)
         });
         
 
         let resultado = arrayKarate.concat(arraySnowboard)
+        resultado = resultado.concat(arrayAlpinismo)
 
-        console.log(resultado)
        
         CORS(res)
             .status(200)

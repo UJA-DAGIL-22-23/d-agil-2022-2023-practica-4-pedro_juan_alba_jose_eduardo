@@ -88,8 +88,7 @@ Todo.plantillaTablaDeportistasSoloNombres.pie = `
  */           
 Todo.sustituyeTags = function (plantilla, deportista) {
     return plantilla
-        //.replace(new RegExp(Todo.plantillaTags.ID, 'g'), deportista.ref['@ref'].id)   
-        .replace(new RegExp(Todo.plantillaTags.NOMBRE, 'g'), deportista.data.nombre)
+        .replace(new RegExp(Todo.plantillaTags.NOMBRE, 'g'), deportista)
 }
 
 
