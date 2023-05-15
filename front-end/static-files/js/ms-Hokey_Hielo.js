@@ -5,6 +5,10 @@
  * @date 03-feb-2023
  */
 
+
+
+
+
 "use strict";
 
 
@@ -181,6 +185,10 @@ Hokey_Hielo.plantillaFormularioPersona.formulario = `
     </table>
 </form>
 `;
+
+// Agrega la clase 'alto-contraste-formulario' al formulario
+Hokey_Hielo.plantillaFormularioPersona.formulario = Hokey_Hielo.plantillaFormularioPersona.formulario.replace('<form', '<form class="alto-contraste-formulario"');
+
 
 
 
@@ -364,27 +372,29 @@ Hokey_Hielo.imprimeMuchasPersonas = function (vector) {
  */
 
 Hokey_Hielo.imprimeUnaPersona = function (persona) {
-    console.log("expect" ,persona)
-    // Llamo a las funciones obtenerIdAnterior y obtenerIdSiguiente para actualizar las variables de ID
-    Hokey_Hielo.obtenerIdAnterior(persona)
-    Hokey_Hielo.obtenerIdSiguiente(persona)
 
-    // console.log(persona) // Para comprobar lo que hay en vector
+
+    console.log("expect", persona);
+    // Llamo a las funciones obtenerIdAnterior y obtenerIdSiguiente para actualizar las variables de ID
+    Hokey_Hielo.obtenerIdAnterior(persona);
+    Hokey_Hielo.obtenerIdSiguiente(persona);
+
     let msj = Hokey_Hielo.personaComoTabla(persona);
 
     // Borro toda la info de Article y la sustituyo por la que me interesa
-    Frontend.Article.actualizar("Mostrar una persona", msj)
+    Frontend.Article.actualizar("Mostrar una persona", msj);
 
     // Actualiza el objeto que guarda los datos mostrados
-    Hokey_Hielo.almacenaDatos(persona)
+    Hokey_Hielo.almacenaDatos(persona);
 
     // Actualiza la información mostrada en la plantilla
     msj = Hokey_Hielo.personaComoFormulario(persona);
     Frontend.Article.actualizar("Mostrar una persona", msj);
 
+    // Agrega la clase 'alto-contraste' al cuerpo del documento
+    document.body.classList.add('alto-contraste');
+};
 
-
-}
 
 
 Hokey_Hielo.obtenerIdAnterior =  function (idActual) {
