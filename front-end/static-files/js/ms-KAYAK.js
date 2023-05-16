@@ -10,7 +10,13 @@
 /// Creo el espacio de nombres
 let Kayak = {};
 
-
+// Plantilla de datosDescargados vacíos
+Kayak.datosDescargadosNulos = {
+    mensaje: "Datos Descargados No válidos",
+    autor: "",
+    email: "",
+    fecha: ""
+}
 
 /**
  * Función que descarga la info MS Plantilla al llamar a una de sus rutas
@@ -53,7 +59,7 @@ Kayak.mostrarHome = function (datosDescargados) {
     // Si datos descargados NO contiene el campo mensaje
     if (typeof datosDescargados.mensaje === "undefined") datosDescargados = this.datosDescargadosNulos
 
-    Frontend.Article.actualizar("Plantilla Home", datosDescargados.mensaje)
+    Frontend.Article.actualizar("Kayak Home", datosDescargados.mensaje)
 }
 
 /**
@@ -82,7 +88,7 @@ Kayak.mostrarAcercaDe = function (datosDescargados) {
     </ul>
     </div>
     `;
-    Frontend.Article.actualizar("Plantilla Acerca de", mensajeAMostrar)
+    Frontend.Article.actualizar("Kayak Acerca de", mensajeAMostrar)
 }
 
 
