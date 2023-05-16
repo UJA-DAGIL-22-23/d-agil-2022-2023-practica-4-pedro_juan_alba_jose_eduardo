@@ -30,6 +30,14 @@ router.get("/getTodos", async (req, res) => {
     }
 });
 
+router.get("/getTodosCompleto", async (req, res) => {
+    try {
+        await callbacks.getTodos(req, res)
+    } catch (error) {
+        console.log(error);
+    }
+});
+
 
 
 
