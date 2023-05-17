@@ -8,7 +8,7 @@
 * Juan Llavero Company (jlc00052@red.ujaen.es)
 * Eduardo Lomas Recena (elr00030@red.ujaen.es)
 * Pedro Torrús Castillo (ptc00006@red.ujaen.es)
-* Jose David Martínez Romero (@red.ujaen.es)
+* Jose David Martínez Romero (jdmr0007@red.ujaen.es)
 * Alba María Álvarez Fernández (amaf0001@red.ujaen.es)
 
 ## Trello
