@@ -52,7 +52,7 @@ const ROUTES = [
     {
         url: '/hokey',
         proxy: {
-            target: "http://localhost:8004",
+            target: "http://localhost:8005",
             changeOrigin: true,
             pathRewrite: {
                 [`^/hokey`]: '',

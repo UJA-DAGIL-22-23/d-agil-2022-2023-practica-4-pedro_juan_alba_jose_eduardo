@@ -4,6 +4,7 @@ const fetch = require("node-fetch");
 const URL_MS_ALPINISMO = "http://localhost:8002";
 const URL_MS_KARATE = "http://localhost:8003";
 const URL_MS_SNOWBOARD= "http://localhost:8004";
+const URL_MS_HOKEY = "http://localhost:8005";
 
 /// Necesario para conectar a la BBDD
 const faunadb = require('faunadb'),
@@ -33,14 +34,17 @@ getTodosNombres: async (req, res) => {
         let url_alpinismo=URL_MS_ALPINISMO+"/getTodas"
         let url_karate=URL_MS_KARATE+"/getTodosDeportistas"
         let url_snowboard=URL_MS_SNOWBOARD+"/getTodas"
+        let url_hokey = URL_MS_HOKEY + "/getTodas"
 
         let response_alpinismo = await fetch(url_alpinismo)
         let response_karate = await fetch(url_karate)
         let response_snowboard = await fetch(url_snowboard)
+        let response_hokey = await fetch(url_hokey)
 
         let alpinismo = await response_alpinismo.json()
         let karate = await response_karate.json()
         let snowboard = await response_snowboard.json()
+        let hokey = await response_hokey.json()
 
        
         let arrayKarate = []
@@ -57,10 +61,15 @@ getTodosNombres: async (req, res) => {
         alpinismo.data.forEach(e => {
             arrayAlpinismo.push(e.data.Nombre)
         });
-        
 
+        let arrayHokey = []
+        hokey.data.forEach(e => {
+            arrayHokey.push([e.data.nombre])
+        });
+        
         let resultado = arrayKarate.concat(arraySnowboard)
         resultado = resultado.concat(arrayAlpinismo)
+        resultado = resultado.concat(arrayHokey)
 
        
         CORS(res)
@@ -79,18 +88,20 @@ getTodosNombres: async (req, res) => {
  getTodos: async (req, res) => {
     try {
         
-        let url_alpinismo=URL_MS_ALPINISMO+"/getTodas"
-        let url_karate=URL_MS_KARATE+"/getTodosDeportistas"
-        let url_snowboard=URL_MS_SNOWBOARD+"/getTodas"
+        let url_alpinismo = URL_MS_ALPINISMO + "/getTodas"
+        let url_karate = URL_MS_KARATE + "/getTodosDeportistas"
+        let url_snowboard = URL_MS_SNOWBOARD + "/getTodas"
+        let url_hokey = URL_MS_HOKEY + "/getTodas"
 
         let response_alpinismo = await fetch(url_alpinismo)
         let response_karate = await fetch(url_karate)
         let response_snowboard = await fetch(url_snowboard)
+        let response_hokey = await fetch(url_hokey)
 
         let alpinismo = await response_alpinismo.json()
         let karate = await response_karate.json()
         let snowboard = await response_snowboard.json()
-
+        let hokey = await response_hokey.json()
        
         let arrayKarate = []
         karate.data.forEach(e => {
@@ -106,12 +117,16 @@ getTodosNombres: async (req, res) => {
         alpinismo.data.forEach(e => {
             arrayAlpinismo.push([e.data.Nombre, "Alpinismo"])
         });
-        
+
+        let arrayHokey = []
+        hokey.data.forEach(e => {
+            arrayHokey.push([e.data.nombre, "Hokey Hielo"])
+        });
 
         let resultado = arrayKarate.concat(arraySnowboard)
         resultado = resultado.concat(arrayAlpinismo)
+        resultado = resultado.concat(arrayHokey)
 
-       
         CORS(res)
             .status(200)
             .json(resultado)
