@@ -260,7 +260,7 @@ Todo.imprimeNombreTodosDeportistasOrdenados = function (vector) {
     msj += Todo.plantillaTablaDeportistasSoloNombres.pie
 
     // Borro toda la info de Article y la sustituyo por la que me interesa
-    Frontend.Article.actualizar("Listado de los nombres de deportistas de todos los deportes", msj)
+    Frontend.Article.actualizar("Listado de los nombres de deportistas de todos los deportes ordenados", msj)
 }
 
 /**

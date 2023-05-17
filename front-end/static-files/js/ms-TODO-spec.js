@@ -60,3 +60,13 @@ describe("Todo.imprimeNombreTodosDeportistas: ", function () {
     })
 
 
+describe("Todo.imprimeNombreTodosDeportistasOrdenados: ", function () {
+    let Nombres  =["Paco", "Julián"]
+    it("Ordena correctamente los nombres del vector",
+        function (){
+            Todo.imprimeNombreTodosDeportistasOrdenados(Nombres)
+            expect(document.getElementById(Frontend.ID_SECCION_PRINCIPAL_TITULO).innerHTML.includes("Listado de los nombres de deportistas de todos los deportes ordenados")).toBeTrue()
+            expect(document.getElementById(Frontend.ID_SECCION_PRINCIPAL_CONTENIDO).innerHTML.includes(Nombres[0])).toBeTrue()
+            expect(document.getElementById(Frontend.ID_SECCION_PRINCIPAL_CONTENIDO).innerHTML.includes(Nombres[1])).toBeTrue()
+        });
+})
