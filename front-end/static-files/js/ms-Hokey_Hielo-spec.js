@@ -174,7 +174,7 @@ describe("Plantilla.mostrarAcercaDe: ", function () {
 
 })
 
-/*describe("Test de la función personaComoTabla", function() {
+describe("Test de la función personaComoTabla", function() {
     let persona = {
         ref: {
             "@ref": {
@@ -205,7 +205,7 @@ describe("Plantilla.mostrarAcercaDe: ", function () {
         expect(tabla).toContain("<td>" + persona.data.posicion + "</td>");
         expect(tabla).toContain("<td>" + persona.data.años_jugados_NHL.join(", ") + "</td>");
     });
-});*/
+});
 
 
 
