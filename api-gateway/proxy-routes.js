@@ -44,6 +44,18 @@ const ROUTES = [
             changeOrigin: true,
             pathRewrite: {
                 [`^/todo`]: '',
+                [`^/alpinismo`]: '',
+            },
+        }
+    },
+
+    {
+        url: '/hokey',
+        proxy: {
+            target: "http://localhost:8004",
+            changeOrigin: true,
+            pathRewrite: {
+                [`^/hokey`]: '',
             },
         }
     }

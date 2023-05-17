@@ -16,6 +16,9 @@
     <link rel="stylesheet" href="css/front-end.css">
 
 
+    <script src="altoContraste.js"></script>
+
+
 </head>
 
 <body>
@@ -48,11 +51,31 @@
             title="Llama a la ruta /personas del MS SNOWBOARD">Listar personas Snowboard</a>
 
 
+        <a href="javascript:Hokey_Hielo.procesarHome()" class="opcion-principal"
+           title="Llama a la ruta / del MS Plantilla">Home</a>
+        <a href="javascript:Hokey_Hielo.procesarAcercaDe()" class="opcion-principal"
+           title="Llama a la ruta /acercade del MS Plantilla">Acerca de</a>
+        <a href="javascript:Hokey_Hielo.listar()" class="opcion-principal"
+           title="Llama a la ruta /proyectos del MS Plantilla">Mostrar equipo</a>
+        <a href="javascript:Hokey_Hielo.mostrar('362608817224024269')" class="opcion-principal mostrar"
+           title="Muestra los datos de una persona como ejemplo">Mostrar una persona de ejemplo</a>
+
+
+
         <a href="javascript:Todo.listarTodosNombres()" class="opcion-principal"
         title="Mostrar todos los deportistas">Listar nombres todos deportes</a>
         <a href="javascript:Todo.listarTodos()" class="opcion-principal"
         title="Mostrar todos los deportistas con su deporte">Listar todos deportes</a>
-        
+
+
+
+
+
+        <a href="javascript:activarAltoContraste()" class="opcion-principal" title="Activar Alto Contraste">Activar Alto Contraste</a>
+
+
+
+
     </nav>
 
     <!-- 
@@ -81,6 +104,8 @@
     <script src="js/ms-KARATE.js"></script>
     <script src="js/ms-SNOWBOARD.js"></script>
     <script src="js/ms-TODO.js"></script>
+    <script src="js/ms-Hokey_Hielo.js"></script>
+    <script src="js/altoContraste.js"></script>
 
 
     <!-- Cargamos ficheros spec con los tests -->
@@ -89,6 +114,7 @@
     <script src="js/ms-KARATE-spec.js"></script>
     <script src="js/ms-SNOWBOARD-spec.js"></script>
     <script src="js/ms-TODO-spec.js"></script>
+    <script src="js/ms-Hokey_Hielo-spec.js"></script>
 
 </body>
 
