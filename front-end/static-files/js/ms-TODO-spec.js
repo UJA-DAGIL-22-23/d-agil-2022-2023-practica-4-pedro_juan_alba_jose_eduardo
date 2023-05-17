@@ -30,3 +30,33 @@ describe("Todo.imprimeTodosDeportistas: ", function () {
             expect(m.includes(vectorDeportistas[1][1])).toBeTrue();
         });
 })
+
+describe("Todo.plantillaTablaDeportistasSoloNombres.actualiza: ", function () {
+    let deportistaPrueba = "Prueba"
+    it("debería devolver solamente el nombre de las personas",
+        function () {
+            let m = Todo.plantillaTablaDeportistasSoloNombres.actualiza(deportistaPrueba)
+            expect(m.includes(deportistaPrueba)).toBeTrue();
+        });
+})
+
+describe("Todo.sustituyeTags: ", function () {
+    let nombrePrueba = "Nombre"
+    it("Sustituye correctamente el nombre por el declarado",
+        function () {
+            let m = Todo.sustituyeTags(cuerpo, nombrePrueba)
+            expect(m.includes(nombrePrueba)).toBeTrue();
+        });
+})
+
+describe("Todo.imprimeNombreTodosDeportistas: ", function () {
+    let vectorPrueba = ["Nombre1", "Nombre2"]
+    it("Muestra correctamente los nombres del vector",
+        function () {
+            let m = Todo.imprimeNombreTodosDeportistas(vectorPrueba)
+            expect(document.getElementById(Frontend.ID_SECCION_PRINCIPAL_CONTENIDO).innerHTML.includes(vectorPrueba[0])).toBeTrue()
+            expect(document.getElementById(Frontend.ID_SECCION_PRINCIPAL_CONTENIDO).innerHTML.includes(vectorPrueba[1])).toBeTrue()
+        });
+    })
+
+
