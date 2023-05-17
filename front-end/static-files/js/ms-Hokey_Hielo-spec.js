@@ -10,8 +10,8 @@
 // Constantes para usar en las pruebas
 const elementoTitulo = document.getElementById(Frontend.ID_SECCION_PRINCIPAL_TITULO)
 const elementoContenido = document.getElementById(Frontend.ID_SECCION_PRINCIPAL_CONTENIDO)
-const TITULO_HOME = "Plantilla Home"
-const TITULO_ACERCA_DE = "Plantilla Acerca de"
+const TITULO_HOME = "Hokey_Hielo Home"
+const TITULO_ACERCA_DE = "Hokey_Hielo Acerca de"
 const Titulo_mostrar_persona="Mostrar una persona"
 
 
@@ -79,7 +79,7 @@ let prueba={
 
 // SPECS a probar
 
-describe("Plantilla.mostrarHome: ", function () {
+describe("Hokey_Hielo.mostrarHome: ", function () {
 
     it("muestra datos nulos cuando le pasamos un valor nulo",
         function () {
@@ -117,7 +117,7 @@ describe("Plantilla.mostrarHome: ", function () {
 })
 
 
-describe("Plantilla.mostrarAcercaDe: ", function () {
+describe("Hokey_Hielo.mostrarAcercaDe: ", function () {
     it("muestra datos nulos cuando le pasamos un valor nulo",
         function () {
             Hokey_Hielo.mostrarAcercaDe()
@@ -191,14 +191,14 @@ describe("Test de la función personaComoTabla", function() {
     };
 
     it("debe devolver una cadena de texto", function() {
-        expect(typeof Plantilla.personaComoTabla(persona)).toEqual("string");
+        expect(typeof Hokey_Hielo.personaComoTabla(persona)).toEqual("string");
     });
 
 
 
 
     it("debe incluir los datos de la persona en la tabla", function() {
-        let tabla = Plantilla.personaComoTabla(persona);
+        let tabla = Hokey_Hielo.personaComoTabla(persona);
         expect(tabla).toContain("<td>" + persona.data.nombre + "</td>");
         expect(tabla).toContain("<td>" + persona.data.apellidos + "</td>");
         expect(tabla).toContain("<td>" + persona.data.fecha.año + "</td>");
@@ -210,7 +210,7 @@ describe("Test de la función personaComoTabla", function() {
 
 
 
-describe('Plantilla.imprimeMuchasPersonas', function() {
+describe('Hokey_Hielo.imprimeMuchasPersonas', function() {
     it('debería llamar a Frontend.Article.actualizar con los datos correctos', function() {
         // Mock de datos
         const vector = prueba.datos_personales;
@@ -293,10 +293,10 @@ describe("recuperaDatosAlmacenados", function() {
     });
 });
 
-describe("Plantilla.sustituyeTags", function() {
+describe("Hokey_Hielo.sustituyeTags", function() {
     it("debería reemplazar correctamente las etiquetas de la plantilla con los datos de la persona", function() {
         // Arrange
-        var plantilla = "ID: {{ID}}, Nombre: {{NOMBRE}}, Apellidos: {{APELLIDOS}}, Año de contratación: {{Año de contratacion}}, Posición: {{Posicion}}, Años jugados en NHL: {{ NHL }}";
+        var Hokey_Hielo = "ID: {{ID}}, Nombre: {{NOMBRE}}, Apellidos: {{APELLIDOS}}, Año de contratación: {{Año de contratacion}}, Posición: {{Posicion}}, Años jugados en NHL: {{ NHL }}";
         var persona = {
             ref: {
                 "@ref": {
@@ -318,7 +318,7 @@ describe("Plantilla.sustituyeTags", function() {
         var resultadoEsperado = "ID: 1234567890, Nombre: Juan, Apellidos: Pérez, Año de contratación: undefined, Posición: Delantero, Años jugados en NHL: 2018,2019,2020";
 
         // Act
-        var resultadoObtenido = Hokey_Hielo.sustituyeTags(plantilla, persona);
+        var resultadoObtenido = Hokey_Hielo.sustituyeTags(Hokey_Hielo, persona);
 
         // Assert
         expect(resultadoEsperado).toEqual(resultadoEsperado);
