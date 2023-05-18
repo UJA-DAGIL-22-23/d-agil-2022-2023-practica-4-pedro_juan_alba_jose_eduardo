@@ -13,7 +13,7 @@ const kayakContenido = document.getElementById(Frontend.ID_SECCION_PRINCIPAL_CON
 const TITULO_HOME_KAYAK = "Kayak Home"
 const TITULO_ACERCA_DE_KAYAK = "Kayak Acerca de"
 
-const datosDescargadosPrueba = {
+const datosDescargadosPruebaKayak = {
     mensaje: "Mensaje de prueba descargado",
     autor: "Prueba de autor",
     email: "Prueba de email",
@@ -65,9 +65,9 @@ describe("Kayak.mostrarHome: ", function () {
 
     it("muestra correctamente el título y el mensaje",
         function () {
-            Kayak.mostrarHome(datosDescargadosPrueba)
+            Kayak.mostrarHome(datosDescargadosPruebaKayak)
             expect(kayakTitulo.innerHTML).toBe(TITULO_HOME_KAYAK)
-            expect(kayakContenido.innerHTML).toBe(datosDescargadosPrueba.mensaje)
+            expect(kayakContenido.innerHTML).toBe(datosDescargadosPruebaKayak.mensaje)
         })
 })
 
@@ -113,13 +113,13 @@ describe("Kayak.mostrarAcercaDe: ", function () {
         })
     it("muestra correctamente el título y el mensaje conteniendo el autor, el email y la fecha",
         function () {
-            Kayak.mostrarAcercaDe(datosDescargadosPrueba)
+            Kayak.mostrarAcercaDe(datosDescargadosPruebaKayak)
             expect(kayakTitulo.innerHTML).toBe(TITULO_ACERCA_DE_KAYAK)
 
             // Comprobamos que al buscar el autor, el email y la fecha de prueba los encuentra dentro del contenido del article
-            expect(kayakContenido.innerHTML.search(datosDescargadosPrueba.autor) >= 0).toBeTrue()
-            expect(kayakContenido.innerHTML.search(datosDescargadosPrueba.email) >= 0).toBeTrue()
-            expect(kayakContenido.innerHTML.search(datosDescargadosPrueba.fecha) >= 0).toBeTrue()
+            expect(kayakContenido.innerHTML.search(datosDescargadosPruebaKayak.autor) >= 0).toBeTrue()
+            expect(kayakContenido.innerHTML.search(datosDescargadosPruebaKayak.email) >= 0).toBeTrue()
+            expect(kayakContenido.innerHTML.search(datosDescargadosPruebaKayak.fecha) >= 0).toBeTrue()
         })
 })
 

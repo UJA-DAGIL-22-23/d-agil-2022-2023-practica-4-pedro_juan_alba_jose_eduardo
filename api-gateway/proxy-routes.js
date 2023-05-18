@@ -62,7 +62,7 @@ const ROUTES = [
     {
         url: '/kayak',
         proxy: {
-            target: "http://localhost:8005",
+            target: "http://localhost:8007",
             changeOrigin: true,
             pathRewrite: {
                 [`^/kayak`]: '',
