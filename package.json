@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "api-gateway": "^1.0.0",
+    "front-end": "^0.2.9"
+  }
+}
