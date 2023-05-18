@@ -28,9 +28,41 @@ const ROUTES = [
         }
     },
     {
-        url: '/kayak',
+        url: '/snowboard',
+        proxy: {
+            target: "http://localhost:8004",
+            changeOrigin: true,
+            pathRewrite: {
+                [`^/snowboard`]: '',
+            },
+        }
+    },
+    {
+        url: '/todo',
+        proxy: {
+            target: "http://localhost:8006",
+            changeOrigin: true,
+            pathRewrite: {
+                [`^/todo`]: '',
+                [`^/alpinismo`]: '',
+            },
+        }
+    },
+
+    {
+        url: '/hokey',
         proxy: {
             target: "http://localhost:8005",
+            changeOrigin: true,
+            pathRewrite: {
+                [`^/hokey`]: '',
+            },
+        }
+    },
+    {
+        url: '/kayak',
+        proxy: {
+            target: "http://localhost:8007",
             changeOrigin: true,
             pathRewrite: {
                 [`^/kayak`]: '',

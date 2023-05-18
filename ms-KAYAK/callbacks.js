@@ -100,7 +100,7 @@ const CB_OTHERS = {
      */
     home: async (req, res) => {
         try {
-            CORS(res).status(200).json({ mensaje: "Microservicio MS Plantilla: home" });
+            CORS(res).status(200).json({ mensaje: "Microservicio MS Kayak: home" });
         } catch (error) {
             CORS(res).status(500).json({ error: error.description })
         }
@@ -114,7 +114,7 @@ const CB_OTHERS = {
     acercaDe: async (req, res) => {
         try {
             CORS(res).status(200).json({
-                mensaje: "Microservicio MS Plantilla: acerca de",
+                mensaje: "Microservicio MS Kayak: acerca de",
                 autor: "Alba María Álvarez Fernández",
                 email: "amaf0001@red.ujaen.es",
                 fecha: "18/04/2023"

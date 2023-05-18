@@ -33,4 +33,47 @@
 .opcion-principal:hover  {
     background-color: rgba(100, 100, 100, 0.3);
 }
+.opcion-principal {
+    margin: 0 .5em 0 .5em;
+}
+.opcion-secundaria,
+.opcion-terciaria {
+    max-width: 5em;
+    min-width: 5em;
+    margin: 0.2em auto 0.2em auto;
+}
 
+body {
+    /* Estilos regulares */
+    background-color: #ffffff;
+    color: #000000;
+}
+
+body.alto-contraste {
+    /* Estilos de alto contraste */
+    background-color: #000000;
+    color: #ffffff;
+}
+
+body.alto-contraste h1 {
+    /* Estilos de alto contraste para títulos h1 */
+    color: #ff0000;
+}
+
+body.alto-contraste p {
+    /* Estilos de alto contraste para párrafos */
+    color: #00ff00;
+    font-size: 18px;
+}
+
+.alto-contraste-formulario {
+    color: white;
+}
+
+.alto-contraste-formulario #form-persona-id,
+.alto-contraste-formulario #form-persona-nombre,
+.alto-contraste-formulario #form-persona-apellidos,
+.alto-contraste-formulario #form-persona-posicion,
+.alto-contraste-formulario #form-persona-anio {
+    color: white;
+}
