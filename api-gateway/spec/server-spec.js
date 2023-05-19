@@ -80,7 +80,7 @@ describe('API Gateway: rutas estáticas', () => {
   describe('Rutas estáticas de MS Plantilla', () => {
     it('Devuelve MS Plantilla Home Page', (done) => {
       supertest(app)
-        .get('/alpinismo/')
+        .get('/todo/')
         .expect(200)
         .expect('Content-Type', /json/)
         .expect(function (res) {
@@ -93,7 +93,7 @@ describe('API Gateway: rutas estáticas', () => {
     });
     it('Devuelve MS Plantilla Acerca De', (done) => {
       supertest(app)
-        .get('/alpinismo/acercade')
+        .get('/todo/acercade')
         .expect(200)
         .expect('Content-Type', /json/)
         .expect(function (res) {
@@ -141,7 +141,7 @@ describe('API Gateway: acceso a', () => {
 
 });
 
-describe('API Gateway: rutas estáticas', () => {
+/*describe('API Gateway: rutas estáticas', () => {
   describe('Rutas estáticas de MS Plantilla', () => {
     it('Devuelve MS Plantilla Home Page', (done) => {
       supertest(app)
@@ -170,7 +170,7 @@ describe('API Gateway: rutas estáticas', () => {
         .end((error) => { error ? done.fail(error) : done() })
     });
   })
-});
+});*/
 
 describe('API Gateway: acceso a', () => {
   describe('BBDD Personas', () => {

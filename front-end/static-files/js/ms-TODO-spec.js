@@ -5,6 +5,19 @@
  * @date 16-05-2023
  */
 
+// Constantes para usar en las pruebas
+const todoTitulo = document.getElementById(Frontend.ID_SECCION_PRINCIPAL_TITULO)
+const todoContenido = document.getElementById(Frontend.ID_SECCION_PRINCIPAL_CONTENIDO)
+const TITULO_HOME_Todo = "Todo Home"
+const TITULO_ACERCA_DE_Todo = "Todo Acerca de"
+
+const datosDescargadosPruebaTodo = {
+    mensaje: "Mensaje de prueba descargado",
+    autor: "Prueba de autor",
+    email: "Prueba de email",
+    fecha: "00/00/0000"
+}
+
 // SPECS a probar
 
 describe("Todo.plantillaTablaDeportistas.actualiza: ", function () {
@@ -69,4 +82,55 @@ describe("Todo.imprimeNombreTodosDeportistasOrdenados: ", function () {
             expect(document.getElementById(Frontend.ID_SECCION_PRINCIPAL_CONTENIDO).innerHTML.includes(Nombres[0])).toBeTrue()
             expect(document.getElementById(Frontend.ID_SECCION_PRINCIPAL_CONTENIDO).innerHTML.includes(Nombres[1])).toBeTrue()
         });
+})
+
+describe("Todo.mostrarAcercaDe: ", function () {
+    it("muestra datos nulos cuando le pasamos un valor nulo",
+        function () {
+            Todo.mostrarAcercaDe()
+            expect(todoTitulo.innerHTML).toBe(TITULO_ACERCA_DE_Todo)
+            expect(todoContenido.innerHTML.search(Todo.datosDescargadosNulos.mensaje) >= 0).toBeTrue()
+        })
+
+    it("muestra datos nulos cuando le pasamos un valor que no es un objeto",
+        function () {
+            Todo.mostrarAcercaDe(23)
+            expect(todoTitulo.innerHTML).toBe(TITULO_ACERCA_DE_Todo)
+            expect(todoContenido.innerHTML.search(Todo.datosDescargadosNulos.mensaje) >= 0).toBeTrue()
+        })
+
+    it("muestra datos nulos cuando le pasamos un objeto que no tiene campo mensaje o autor o email o fecha ",
+        function () {
+            // Objeto vacío
+            Todo.mostrarAcercaDe({})
+            expect(todoTitulo.innerHTML).toBe(TITULO_ACERCA_DE_Todo)
+            expect(todoContenido.innerHTML.search(Todo.datosDescargadosNulos.mensaje) >= 0).toBeTrue()
+
+            // Objeto sin campo mensaje
+            Todo.mostrarAcercaDe({ autor: "un autor", email: "un email", fecha: "una fecha" })
+            expect(todoTitulo.innerHTML).toBe(TITULO_ACERCA_DE_Todo)
+            expect(todoContenido.innerHTML.search(Todo.datosDescargadosNulos.mensaje) >= 0).toBeTrue()
+            // Objeto sin campo autor
+            Todo.mostrarAcercaDe({ mensaje: "un mensaje", email: "un email", fecha: "una fecha" })
+            expect(todoTitulo.innerHTML).toBe(TITULO_ACERCA_DE_Todo)
+            expect(todoContenido.innerHTML.search(Todo.datosDescargadosNulos.mensaje) >= 0).toBeTrue()
+            // Objeto sin campo email
+            Todo.mostrarAcercaDe({ mensaje: "un mensaje", autor: "un autor", fecha: "una fecha" })
+            expect(todoTitulo.innerHTML).toBe(TITULO_ACERCA_DE_Todo)
+            expect(todoContenido.innerHTML.search(Todo.datosDescargadosNulos.mensaje) >= 0).toBeTrue()
+            // Objeto sin campo fecha
+            Todo.mostrarAcercaDe({ mensaje: "un mensaje", autor: "un autor", email: "un email" })
+            expect(todoTitulo.innerHTML).toBe(TITULO_ACERCA_DE_Todo)
+            expect(todoContenido.innerHTML.search(Todo.datosDescargadosNulos.mensaje) >= 0).toBeTrue()
+        })
+    it("muestra correctamente el título y el mensaje conteniendo el autor, el email y la fecha",
+        function () {
+            Todo.mostrarAcercaDe(datosDescargadosPruebaTodo)
+            expect(todoTitulo.innerHTML).toBe(TITULO_ACERCA_DE_Todo)
+
+            // Comprobamos que al buscar el autor, el email y la fecha de prueba los encuentra dentro del contenido del article
+            expect(todoContenido.innerHTML.search(datosDescargadosPruebaTodo.autor) >= 0).toBeTrue()
+            expect(todoContenido.innerHTML.search(datosDescargadosPruebaTodo.email) >= 0).toBeTrue()
+            expect(todoContenido.innerHTML.search(datosDescargadosPruebaTodo.fecha) >= 0).toBeTrue()
+        })
 })

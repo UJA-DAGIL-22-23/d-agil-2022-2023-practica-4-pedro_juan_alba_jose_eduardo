@@ -38,7 +38,16 @@ router.get("/getTodosCompleto", async (req, res) => {
     }
 });
 
-
+/**
+ * Ruta Acerca De (es decir, About...)
+ */
+router.get("/acercade", async (req, res) => {
+    try {
+        await callbacks.acercaDe(req, res)
+    } catch (error) {
+        console.log(error);
+    }
+});
 
 
 // Exporto el módulo para poder usarlo en server
