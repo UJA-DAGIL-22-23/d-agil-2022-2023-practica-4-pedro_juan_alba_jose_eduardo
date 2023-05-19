@@ -136,8 +136,6 @@ getTodosNombres: async (req, res) => {
 }
 }
 
-
-
 /**
 * Callbacks adicionales. Fundamentalmente para comprobar que el ms funciona.
 */
@@ -149,7 +147,30 @@ const CB_OTHERS = {
             CORS(res).status(500).json({ error: error.description })
         }
     },
+
+    /**
+     * Devuelve un mensaje indicando que se ha accedido a la información Acerca De del microservicio
+     * @param {*} req Objeto con los parámetros que se han pasado en la llamada a esta URL 
+     * @param {*} res Objeto Response con las respuesta que se va a dar a la petición recibida
+     */
+    acercaDe: async (req, res) => {
+        try {
+
+            CORS(res).status(200).json({
+                mensaje: "Microservicio MS Plantilla: acerca de",
+                autor: "Alba María Álvarez Fernández *** Eduardo Lomas Recena *** Jose David Martinez Romero *** Pedro Torrús Castillo *** Juan Llavero Company",
+                email: "amaf0001@red.ujaen.es *** elr00030@red.ujaen.es *** Jdmr0007@red.ujaen.es *** ptc00006@red.ujaen.es *** jlc00052@red.ujaen.es",
+                fecha: "18/04/2023 *** 23/03/2023 *** 25/03/2023 *** Marzo, 2023 *** 30/03/2023"
+                
+            });
+        } catch (error) {
+            CORS(res).status(500).json({ error: error.description })
+        }
+    },
 }
+
+
+
 
 // Une todos los callbacks en un solo objeto.
 // OJO: No debe haber callbacks con el mismo nombre en los distintos objetos, porque si no

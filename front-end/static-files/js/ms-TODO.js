@@ -306,3 +306,40 @@ Todo.listarOrdenados = function () {
 Todo.buscarSubstring = function() {
     Todo.mostrarDeportistasCompleto(Todo.buscaPorNombre);
 }
+
+/**
+ * Función principal para mostrar los datos enviados por la ruta "acerca de" de MS Plantilla
+ */
+Todo.mostrarAcercaDe = function (datosDescargados) {
+    // Si no se ha proporcionado valor para datosDescargados
+    datosDescargados = datosDescargados || this.datosDescargadosNulos
+
+    // Si datos descargados NO es un objeto 
+    if (typeof datosDescargados !== "object") datosDescargados = this.datosDescargadosNulos
+
+    // Si datos descargados NO contiene los campos mensaje, autor, o email
+    if (typeof datosDescargados.mensaje === "undefined" ||
+        typeof datosDescargados.autor === "undefined" ||
+        typeof datosDescargados.email === "undefined" ||
+        typeof datosDescargados.fecha === "undefined"
+    ) datosDescargados = this.datosDescargadosNulos
+
+    const mensajeAMostrar = `<div>
+    <p>${datosDescargados.mensaje}</p>
+    <ul>
+        <li><b>Autores</b>: ${datosDescargados.autor}</li>
+        <li><b>E-mail</b>: ${datosDescargados.email}</li>
+        <li><b>Fecha</b>: ${datosDescargados.fecha}</li>
+    </ul>
+    </div>
+    `;
+    Frontend.Article.actualizar("Todo Acerca de", mensajeAMostrar)
+}
+
+/**
+ * Función principal para responder al evento de elegir la opción "Acerca de"
+ */
+Todo.procesarAcercaDe = function () {
+    this.descargarRuta("/todo/acercade", this.mostrarAcercaDe);
+    //this.descargarRuta("ksdf", this.mensajeAMostrar);
+}
