@@ -17,10 +17,10 @@
 
 * Captura de pantalla **inicial**:
 
-<img src="./assets/img/trelloINICIO.png">
+<img src="./assets/img/trelloInicio.png">
 
 * Captura de pantalla **final**:
-
+<img src="./assets/img/trelloSprint.png">
 
 
 ## Descripción del incremento
