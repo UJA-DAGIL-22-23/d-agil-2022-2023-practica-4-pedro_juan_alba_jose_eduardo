@@ -15,12 +15,14 @@
 
 * URL: https://trello.com/b/F2niGTHm/pr%C3%A1ctica4
 
-* Captura de pantalla **inicial**:
+* Captura de pantalla **PRODUCT BACKLOG**:
 
-<img src="./assets/img/trelloInicio.png">
+<img src="./assets/img/trelloINICIO.png">
 
-* Captura de pantalla **final**:
+* Captura de pantalla **SPRINT BACKLOG**:
+
 <img src="./assets/img/trelloSprint.png">
+
 
 
 ## Descripción del incremento
